@@ -267,3 +267,7 @@ section.publications img {
     width: 75px;
     vertical-align:middle;
 }
+
+section.publications strong {
+    color:#555555;
+}
