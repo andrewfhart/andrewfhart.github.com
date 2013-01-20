@@ -269,5 +269,8 @@ section.publications img {
 }
 
 section.publications strong {
-    color:#555555;
+    color:#000000;
+    font-weight:normal;
+    background-color:#de8;
+    padding:1px;
 }
