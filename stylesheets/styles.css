@@ -253,3 +253,17 @@ footer {
     color:#444;
   }
 }
+
+section.publications {
+
+}
+
+section.publications img {
+    border: 1px solid #CCCCCC;
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding: 5px;
+    width: 75px;
+    vertical-align:middle;
+}
