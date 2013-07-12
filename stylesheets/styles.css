@@ -1,3 +1,18 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400|Oleo+Script|Oxygen:400,300|Raleway:400,300);
+
+.foleo {
+	font-family: 'Oleo Script', cursive;
+}	
+.fsource {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+.foxygen {
+	font-family: 'Oxygen', sans-serif;
+}
+.fraleway {
+	font-family: 'Raleway', sans-serif;
+}
+
 html,body {
     background-color: #f0f0f0;
 }
@@ -22,6 +37,7 @@ h1 {
 
 h2 {
     font-size: 28px;
+    font-weight:400;
 }
 
 h2 a, h3 a {
@@ -114,6 +130,10 @@ a.button.active-dark:hover {
 }
 .site-logo h1 {
     display: inline;
+    padding-bottom:0px;
+}
+.site-logo img {
+    max-height:45px;
 }
 #site-navigation ul li {
     text-align: center;
@@ -146,6 +166,10 @@ a.button.active-dark:hover {
 #subnav a {
     text-transform: uppercase;
     text-decoration: none;
+}
+.site-logo h1 {
+    text-transform: none;
+    font-weight:normal;
 }
 #site-navigation {
     font-size: 14px;
@@ -264,14 +288,20 @@ a.button.active-dark:hover {
 .hero-text h1 {
     margin: 0 0 30px 0;
     padding-top: 0;
-    font-size: 46px;
+    font-size: 86px;
     font-weight: 300;
     line-height: 1.10;
+    color:#fff;
+    text-shadow: 1px 2px 4px #333;
+    filter: dropshadow(color=#333, offx=1, offy=2);
+    font-family:'Oleo Script';
 }
 .hero-text p {
-    font-size: 19px;
+    font-size: 22px;
     margin: 0 0 80px 0;
     padding: 0;
+    text-shadow: 1px 2px 4px #666;
+    filter: dropshadow(color=#666, offx=1, offy=2);
 }
 .hero-text .watch {
     font-size: 18px;
@@ -303,11 +333,9 @@ p.intro {
 .frontpage #faqs h2 {
     text-align: center;
 }
-#say-hello img {
-    margin-top: 40px;
-}
+
 #say-hello.padded-anchor {
-    margin-top: -85px;
+    margin-top:  -10px;
     padding-top: 65px;
 }
 #say-hello h2 {
@@ -376,19 +404,19 @@ html:not(.mobile) .coverphoto {
         background-position: top center !important;
     }
     html:not(.mobile) .fp-section-hero {
-	    background-image: url('http://dx4ncraaox0l3.cloudfront.net/wp-content/site/images/pages/frontpage/covers/mobile/hero-extrawide-mobile.jpg');
+	    background-image: url('#');
     }
 }
 @media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
     .fp-section-hero {
-	    background-image: url('http://dx4ncraaox0l3.cloudfront.net/wp-content/site/images/pages/frontpage/covers/mobile/hero-extrawide-mobile@2x.jpg');
+	    background-image: url('#');
 	    background-size: 1024px 500px;
     }
 }
 
 @media (min-width: 1025px) {
     html:not(.mobile) .fp-section-hero {
-	    background-image: url('../images/western-roads-xw.jpg');
+	    background-image: url('../images/cover-summer2013.jpg');
 	    background-position: bottom center !important;
 	    padding-left: 40px;
     }
@@ -396,13 +424,13 @@ html:not(.mobile) .coverphoto {
 
 /* FP */
 html:not(.mobile) .fp-section1 {
-	background-image: url('../images/ca-sunset-xw.jpg');
+	background-image: url('../images/p1-summer2013-xw.jpg');
 }
 html:not(.mobile) .fp-section2 {
-	background-image: url('');
+	background-image: url('../images/p2-summer2013-xw.jpg');
 }
 html:not(.mobile) .fp-section3 {
-	background-image: url('');
+	background-image: url('../images/p3-summer2013-xw.jpg');
 }
 html:not(.mobile) .fp-section4 {
 	background-image: url('');
