@@ -369,19 +369,61 @@ p.intro {
 }
 .flow > .step1 {
     left: 0;
-    background: url('') top center no-repeat;
-	background-size:168px;
+    background: url('../images/afh-icon-software-engineer.png') top center no-repeat;
+    background-size:168px;
 }
 .flow > .step2 {
     left: 340px;
-    background: url('') top center no-repeat;
-	background-size:168px;
+    background: url('../images/afh-icon-consultant.png  ') top center no-repeat;
+    background-size:168px;
 }
 .flow > .step3 {
     left: 690px;
-    background: url('') top center no-repeat;
-	background-size:168px;
+    background: url('../images/afh-icon-photographer.png') top center no-repeat;
+    background-size:168px;
 }
+
+.flow-travel .details {
+    font-size:80%;
+    font-weight:400;
+}
+
+.flow-travel > .step1 {
+    left: 0;
+    background: url('../images/afh-travel-cape-town-sa.jpg') top center no-repeat;
+    background-size:245px;
+
+}
+.flow-travel > .step2 {
+    left: 340px;
+    background: url('../images/afh-travel-plantation-in.jpg') top center no-repeat;
+    background-size:245px;
+
+}
+.flow-travel > .step3 {
+    left: 690px;
+    background: url('../images/afh-travel-burj-dubai-uae.jpg') top center no-repeat;
+    background-size:245px;
+}
+
+.flow-travel > .step4 {
+    left: 0;
+    background: url('../images/afh-travel-roadtrip-is.jpg') top center no-repeat;
+    background-size:245px;
+
+}
+.flow-travel > .step5 {
+    left: 340px;
+    background: url('../images/afh-travel-bamberg-de.jpg') top center no-repeat;
+    background-size:245px;
+
+}
+.flow-travel > .step6 {
+    left: 690px;
+    background: url('../images/afh-travel-picachos-pr.jpg') top center no-repeat;
+    background-size:245px;
+}
+
 .step {
     line-height: 1.3;
 }
@@ -433,14 +475,16 @@ html:not(.mobile) .fp-section3 {
 	background-image: url('../images/p3-summer2013-xw.jpg');
 }
 html:not(.mobile) .fp-section4 {
-	background-image: url('');
+	background-image: url('../images/p6-summer2013-xw.jpg');
 }
+/*
 html:not(.mobile) .fp-section5 {
 	background-image: url('');
 }
 html:not(.mobile) .fp-section6 {
 	background-image: url('');
 }
+*/
 html:not(.mobile) .fp-section7 {
-	background-image: url('');
+	background-image: url('../images/p7-summer2013-xw.jpg');
 }
