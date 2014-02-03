@@ -456,6 +456,46 @@ p.intro.with-image img {
     line-height: 1.4;
 }
 
+.publications p {
+    line-height:1.6em;
+}
+
+
+.publications.pub-section-journals {
+    margin-top:80px;
+}
+
+.publications p.with-image {
+    margin-left:130px;
+    min-height:160px;
+    line-height:1.6em;
+}
+
+.publications p.with-image img {
+    float:left;
+    width:108px;
+    margin-left:-130px;
+    vertical-align:top;
+    padding:3px;
+    background-color:#fff;
+    border:solid 1px #ccc;
+    border-radius:3px;
+}
+
+.publications h4 {
+    background-color:#cdcdcd;
+    border-bottom:solid 1px #bcbcbc;
+    border-radius: 3px 3px 0px 0px;
+    padding:8px;
+    font-weight:normal;
+    margin-top:3em;
+}
+
+.publications h5 {
+    border-bottom: dotted 1px #ccc;
+    font-size:1.1em;
+}
+
 
 /* Cover Images ============================================
    Most mobile browsers do not support the 'cover' attribute
