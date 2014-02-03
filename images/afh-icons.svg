@@ -24,16 +24,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.3671875"
-     inkscape:cx="325.55196"
-     inkscape:cy="421.89992"
+     inkscape:zoom="1.9334951"
+     inkscape:cx="136.57649"
+     inkscape:cy="453.81918"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      showguides="true"
      inkscape:guide-bbox="true"
-     inkscape:window-width="1440"
-     inkscape:window-height="810"
+     inkscape:window-width="1656"
+     inkscape:window-height="741"
      inkscape:window-x="0"
      inkscape:window-y="33"
      inkscape:window-maximized="1"
@@ -110,19 +110,28 @@
        sodipodi:rx="23.035715"
        sodipodi:ry="16.25"
        d="m 315.71427,583.25507 a 23.035715,16.25 0 1 1 -46.07143,0 23.035715,16.25 0 1 1 46.07143,0 z"
-       transform="matrix(1.2788981,0,0,1.2788981,-79.319821,-156.01668)" />
+       transform="matrix(1.2788981,0,0,1.2788981,-77.768227,-156.01668)"
+       inkscape:export-filename="/home/ahart/Development/git/andrewfhart.github.com/images/afh-icon-consultant.png"
+       inkscape:export-xdpi="198.3"
+       inkscape:export-ydpi="198.3" />
     <path
        style="fill:#999999;fill-opacity:1;stroke:#999999"
-       d="m 250.01276,619.02922 c 21.01047,-7.308 18.02528,-19.5304 18.02528,-19.5304 l 26.71983,9.82186 c 0,0 -29.19931,16.34907 -44.74511,9.70854 z"
+       d="m 252.08156,620.83941 c 21.01047,-7.308 19.83547,-20.30619 19.83547,-20.30619 l 24.39244,8.78746 c 0,0 -28.68211,18.15926 -44.22791,11.51873 z"
        id="path3788"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="cccc" />
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/home/ahart/Development/git/andrewfhart.github.com/images/afh-icon-consultant.png"
+       inkscape:export-xdpi="198.3"
+       inkscape:export-ydpi="198.3" />
     <path
-       style="fill:#999999;fill-opacity:1;stroke:#ffffff;stroke-width:3;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 315.12562,588.77376 c -12.6228,0 -22.8467,7.22263 -22.8467,16.12708 0,8.90446 10.2239,16.12709 22.8467,16.12709 0.70515,0 1.40167,-0.0554 2.09055,-0.0995 5.51602,2.81386 22.7474,10.86508 32.80169,6.57028 -16.3001,-5.66961 -14.39867,-15.74942 -14.39867,-15.74942 l -0.43427,0.9165 c 1.786,-2.29763 2.78739,-4.95964 2.78739,-7.7649 0,-8.90446 -10.22389,-16.12709 -22.84669,-16.12709 z"
+       style="fill:#999999;fill-opacity:1;stroke:#ffffff;stroke-width:3;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       d="m 316.67722,588.77376 c -12.6228,0 -22.8467,7.22263 -22.8467,16.12708 0,8.90446 10.2239,16.12709 22.8467,16.12709 0.70515,0 1.40167,-0.0554 2.09055,-0.0995 5.51602,2.81386 19.90281,8.53769 29.9571,4.24289 -16.3001,-5.66961 -11.48943,-13.09878 -11.48943,-13.09878 l -0.36962,0.59325 c 1.786,-2.29763 2.65809,-4.95964 2.65809,-7.7649 0,-8.90446 -10.22389,-16.12709 -22.84669,-16.12709 z"
        id="path3790"
        inkscape:connector-curvature="0"
-       sodipodi:nodetypes="sssccccss" />
+       sodipodi:nodetypes="cssccccssc"
+       inkscape:export-filename="/home/ahart/Development/git/andrewfhart.github.com/images/afh-icon-consultant.png"
+       inkscape:export-xdpi="198.3"
+       inkscape:export-ydpi="198.3" />
     <rect
        style="fill:#999999;fill-opacity:1;stroke:#999999"
        id="rect3800"
@@ -141,5 +150,23 @@
        sodipodi:ry="14.481546"
        d="m 290.14814,659.29163 a 14.481546,14.481546 0 1 1 -28.96309,0 14.481546,14.481546 0 1 1 28.96309,0 z"
        transform="translate(22.866564,12.792903)" />
+    <path
+       style="fill:#999999;fill-opacity:1;stroke:#999999"
+       d="m 153.15625,556.34375 c -21.21898,0 -38.40625,11.96406 -38.40625,26.71875 0,8.39632 5.57009,15.88363 14.28125,20.78125 -1.70797,4.44138 -6.32565,10.80212 -18.84375,15.15625 13.58684,6.98524 33.20348,-9.36038 41.9375,-9.25 -1.16104,-2.05697 -1.8125,-4.29994 -1.8125,-6.65625 0,-9.79595 11.05396,-17.75 24.6875,-17.75 5.89311,0 11.28687,1.49283 15.53125,3.96875 0.68796,-2.00064 1.0625,-4.10278 1.0625,-6.25 0,-14.75469 -17.21854,-26.71875 -38.4375,-26.71875 z"
+       id="path3360"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="sscccsscss"
+       inkscape:export-filename="/home/ahart/Development/git/andrewfhart.github.com/images/afh-icon-consultant.png"
+       inkscape:export-xdpi="198.3"
+       inkscape:export-ydpi="198.3" />
+    <path
+       inkscape:export-ydpi="198.3"
+       inkscape:export-xdpi="198.3"
+       inkscape:export-filename="/home/ahart/Development/git/andrewfhart.github.com/images/afh-icon-consultant.png"
+       sodipodi:nodetypes="cssccccssc"
+       inkscape:connector-curvature="0"
+       id="path3362"
+       d="m 175.36894,587.99099 c -11.75166,0 -21.98175,7.13014 -21.98175,15.92058 0,8.79045 10.23009,15.9206 21.98175,15.9206 0.65648,0 1.30493,-0.0547 1.94627,-0.0982 5.13535,2.77783 18.52924,8.42838 27.88966,4.18857 -15.17517,-5.59702 -10.6965,-12.93106 -10.6965,-12.93106 l -0.34411,0.58565 c 1.66273,-2.26821 2.47464,-4.89613 2.47464,-7.66548 0,-8.79045 -9.5183,-15.92059 -21.26996,-15.92059 z"
+       style="fill:#999999;fill-opacity:1;stroke:none" />
   </g>
 </svg>
