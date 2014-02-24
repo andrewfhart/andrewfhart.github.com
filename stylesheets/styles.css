@@ -195,6 +195,17 @@ a.button.active-dark:hover {
     border-top:solid 5px #57a;
 }
 
+#banner {
+    text-align:center; 
+    background-color:#ffdf73;
+    padding:3px;
+    border-bottom:solid 1px #fc0;
+}
+#banner a {
+    color:#000;
+    text-decoration:underline;
+}
+
 #footer {
     background-color:#232323;
     color:#fff;
