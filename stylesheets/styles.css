@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400|Oleo+Script|Oxygen:400,300|Raleway:400,300);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,600|Source+Sans+Pro:300,400|Oleo+Script|Oxygen:400,300|Raleway:400,300);
 
 .foleo {
 	font-family: 'Oleo Script', cursive;
@@ -12,6 +12,13 @@
 .fraleway {
 	font-family: 'Raleway', sans-serif;
 }
+.opensans {
+    font-family: 'Open Sans', sans-serif;
+}
+.bold-font {
+    font-weight: 600;
+}
+
 
 html,body {
     background-color: #f0f0f0;
@@ -22,7 +29,7 @@ body {
     margin: 85px 0 0 0 !important
     padding:0
     color:#727375;
-    font-family: proxima-nova, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     font-weight: 300;
 }
@@ -54,9 +61,7 @@ h3 {
     font-size: 20px;
 }
 
-.bold-font {
-    font-weight: 600;
-}
+
 
 a {
     color: #00c7e5;
@@ -82,6 +87,15 @@ hr {
     padding: 0;
 }
 
+#mypic {
+    width:200px;
+    height:200px;
+    border:solid 1px #ccc;
+    padding:5px;
+    margin-bottom:15px;
+    background-color:#fff;
+}
+
 .clear {
     float: none;
 	clear: both;
@@ -94,7 +108,7 @@ hr {
     color: #00c7e5;
 }
 
-.round {
+.round, .rounded {
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     border-radius: 2px;
@@ -111,250 +125,9 @@ a.button.active-dark:hover {
     background-color: #414246 !important;
 }
 
-/* Header =================================================== */
-#site-navigation {
-    width: 100%;
-    height: 30px;
-    margin: 0 auto;
-    display: block;
+#say-hello {
+    margin-top:1em;
 }
-#site-navigation .inner-content {
-    position: relative;
-}
-#subnav.inner-content {
-    margin: 0 auto;
-
-}
-.site-logo {
-    position: relative;
-    top: 3px;
-}
-.site-logo h1 {
-    display: inline;
-    padding-bottom:0px;
-    font-size:23px;
-    letter-spacing:0.04em;
-}
-.site-logo img {
-    max-height:30px;
-    vertical-align: top;
-}
-#site-navigation ul li {
-    text-align: center;
-    list-style-type: none;
-}
-#site-navigation > ul li a {
-    font-size: 16px;
-}
-#site-navigation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 35px;
-    background-color: #3d3e40;
-    z-index: 999;
-    width: 100%;
-    opacity:0.93;
-    border-bottom:solid 2px #4292b3;
-    border-bottom:solid 2px #abc1d9;
-}
-#site-navigation .nav-menu {
-    position: relative;
-    right: 80px;
-    top: -35px;
-}
-#site-navigation a {
-    color: #c8c9cb;
-}
-#site-navigation a:hover {
-    color: #ffffff;
-}
-#site-navigation a,
-#subnav a {
-    text-transform: uppercase;
-    text-decoration: none;
-}
-.site-logo h1 {
-    text-transform: none;
-    font-weight:normal;
-}
-#site-navigation {
-    font-size: 14px;
-}
-#site-navigation li,
-#subnav > li {
-    float: right;
-	margin-left: 35px;
-	list-style-type: none;
-}
-#subnav {
-    position: relative;
-    right: 18px;
-}
-#subnav > li {
-    height: 22px;
-    padding-top: 8px;
-}
-.pinned #subnav > li {
-    padding-top: 0px;
-}
-#sub-navigation {
-	display: block;
-	width: 100% !important;
-	background-color: white;
-	z-index: 999;
-	margin: 0;
-	padding: 0;
-	height: 35px;
-	border-bottom: thin solid #c6c8ca;
-}
-#subnav {
-    margin-top: 0px;
-}
-#subnav a {
-    font-size: 11px;
-    padding-bottom: 4px;
-}
-#menu-primary-navigation {
-    margin: 0px;
-    padding: 0px;
-}
-/* Pinned Sub-Nav */
-#sub-navigation {
-    position: static;
-}
-#sub-navigation.pinned {
-    position: fixed;
-    top: 35px;
-}
-#sub-navigation li {
-    line-height: 1.1;
-}
-.pinned #subnav {
-    margin-top: 8px;
-}
-#site-navigation .current-menu-item a,
-#site-navigation .current-menu-item a:visited,
-#site-navigation .current-menu-item a:hover,
-#site-navigation .current-menu-item a:active{
-    color: #A1DC00 !important;
-}
-#subnav a {
-    color: #b3b4b6 !important;
-    text-transform: uppercase;
-}
-.current-menu-item a:hover {
-    text-decoration: underline;
-}
-/* Active subnav item (home page) */
-#subnav li a.current {
-    border-bottom: 5px solid #BDF446;
-}
-/* Active subnav item (other pages) */
-#subnav li.current-menu-item {
-    border-bottom: 5px solid #BDF446;
-}
-
-/* Page =================================================== */
-#page-wrapper {
-    width: 100%;
-}
-.inner-content {
-    width: 940px;
-    margin: 0 auto;
-}
-#content h1 {
-    margin-bottom: 8px;
-}
-#content h2 {
-    margin: 70px 0 35px 0;
-}
-.fp-section-hero,
-.coverphoto {
-    height: 700px;
-    position: relative;
-    background-repeat: no-repeat;
-}
-.fp-section-hero {
-    height:490px;
-}
-.content-container {
-  width: 660px;
-  margin: 0 auto;
-}
-
-
-/* Home page ============================================= */
-.frontpage {
-    font-size: 18px;
-    line-height: 1.5;
-}
-.hero-text {
-    position: relative;
-    top: 230px;
-    left:0px;
-}
-.hero-text h1 {
-    margin: 0 0 0 0;
-    padding-top: 0;
-    font-size: 80px;
-    font-weight: 300;
-    line-height: 1.10;
-    color:#fff;
-    text-shadow: 1px 2px 4px #333;
-    filter: dropshadow(color=#333, offx=1, offy=2);
-    font-family:'Oleo Script';
-}
-.hero-text p {
-    font-size: 22px;
-    margin: 0 0 80px 0;
-    padding: 0;
-    text-shadow: 1px 2px 4px #666;
-    filter: dropshadow(color=#666, offx=1, offy=2);
-}
-.hero-text .watch {
-    font-size: 18px;
-    text-transform: uppercase;
-    padding-right: 30px;
-}
-.hero-text .button {
-    display: block;
-    position: absolute;
-    top: 150px;
-    left: 130px;
-    background-position: 0 0;
-    width: 100px;
-    height: 109px;
-    text-decoration: none;
-    outline: none;
-}
-.hero-text .button:hover  {
-    background-position: 0 -159px;
-}
-p.intro, .unique-information {
-    margin: 0px 130px 60px;
-    line-height: 1.6em;
-}
-
-p.intro.with-image img {
-  position:absolute;
-  margin-left:-130px;
-  border-radius: 5px;
-  padding:5px;
-  background-color:#fff;
-  width:100px;
-}
-
-.unique-information ul {
-    margin:0px;
-    padding:0px 0px 0px 15px;
-    line-height:1.8em;
-}
-
-.unique-information ul li {
-    padding-left:15px;
-}
-
 
 #say-hello,
 #features,
@@ -366,94 +139,9 @@ p.intro.with-image img {
     margin-top:  -10px;
     padding-top: 65px;
 }
+
 #say-hello h2 {
-    margin-top: -20px;
     margin-bottom:15px;
-}
-
-
-.flow {
-    position: relative;
-    height: 320px;
-}
-.flow .next {
-    position: absolute;
-    top: 45px;
-}
-.flow .next1 {
-    left: 270px;
-}
-.flow .next2 {
-    left: 645px;
-}
-.flow > .step {
-    height: 215px;
-    width: 245px;
-    position: absolute;
-    top: 0;
-}
-.flow .details {
-    display: block;
-    margin-top: 188px;
-}
-.flow > .step1 {
-    left: 0;
-    background: url('../images/afh-icon-software-engineer.png') top center no-repeat;
-    background-size:168px;
-}
-.flow > .step2 {
-    left: 340px;
-    background: url('../images/afh-icon-consultant.png  ') top center no-repeat;
-    background-size:168px;
-}
-.flow > .step3 {
-    left: 690px;
-    background: url('../images/afh-icon-photographer.png') top center no-repeat;
-    background-size:168px;
-}
-
-.flow-travel > .step {
-    background: url('../images/afh-icon-photographer.png') top center no-repeat;
-    background-size:168px;
-}
-
-.flow-travel img {
-    width:245px;
-    padding:5px;
-    border:solid 1px #ccc;
-    border-radius:3px;
-    margin-top:-6px;
-
-}
-
-.flow-travel .details {
-    font-size:80%;
-    margin-top:10px;
-    font-weight:400;
-}
-
-.flow-travel > .step1,
-.flow-travel > .step4,
-.flow-travel > .step7,
-.flow-travel > .step10 {
-    left: 0;
-
-}
-.flow-travel > .step2,
-.flow-travel > .step5,
-.flow-travel > .step8,
-.flow-travel > .step11 {
-    left: 340px;
-}
-.flow-travel > .step3,
-.flow-travel > .step6,
-.flow-travel > .step9,
-.flow-travel > .step12 {
-    left: 690px;
-}
-
-.step {
-    line-height: 1.4;
 }
 
 .publications p {
@@ -496,71 +184,21 @@ p.intro.with-image img {
     font-size:1.1em;
 }
 
-
-/* Cover Images ============================================
-   Most mobile browsers do not support the 'cover' attribute
-   so the mobile stylesheet will change these to static images. */
-html:not(.mobile) .coverphoto {
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-attachment: fixed;
+.thumbnail img {
+    margin-top:1.5em;
+    margin-bottom:1em;
+    height:125px;
 }
 
-@media (max-width: 1024px) {
-    .coverphoto {
-        width: 100% !important;
-        background-position: top center !important;
-    }
-    html:not(.mobile) .fp-section-hero {
-	    background-image: url('../images/cover-spring2014.jpg');
-    }
-}
-@media (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
-    .fp-section-hero {
-	    background-image: url('#');
-	    background-size: 1024px 500px;
-    }
+.section-adverts .thumbnail {
+    height:400px;
+    border-top:solid 5px #57a;
 }
 
-@media (min-width: 1025px) {
-    html:not(.mobile) .fp-section-hero {
-	    background-image: url('../images/cover-spring2014.jpg');
-	    /*background-position: top center !important;*/
-        -webkit-background-size: 100%;
-        -moz-background-size: 100%;
-        -o-background-size: 100%;
-        background-size: 100%;
-        background-attachment: fixed;
-        background-position: 0px -44px;
-    }
-}
-
-/* FP */
-html:not(.mobile) .fp-section0 {
-    background-image: url('../images/cover-spring2014.jpg');
-}
-html:not(.mobile) .fp-section1 {
-    background-image: url('../images/p1-summer2013-xw.jpg');
-}
-html:not(.mobile) .fp-section2 {
-	background-image: url('../images/p2-summer2013-xw.jpg');
-}
-html:not(.mobile) .fp-section3 {
-	background-image: url('../images/p3-summer2013-xw.jpg');
-}
-html:not(.mobile) .fp-section4 {
-	background-image: url('../images/p6-summer2013-xw.jpg');
-}
-/*
-html:not(.mobile) .fp-section5 {
-	background-image: url('');
-}
-html:not(.mobile) .fp-section6 {
-	background-image: url('');
-}
-*/
-html:not(.mobile) .fp-section7 {
-	background-image: url('../images/p7-summer2013-xw.jpg');
+#footer {
+    background-color:#232323;
+    color:#fff;
+    font-size:90%;
+    height:250px;
+    margin-top:150px;
 }
