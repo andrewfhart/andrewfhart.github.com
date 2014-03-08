@@ -238,6 +238,7 @@ a.button.active-dark:hover {
 .section-travel .thumbnail {
     height:380px;
     border-top:solid 3px #391;
+    margin-bottom:2em;
 }
 
 .section-travel .thumbnail h3 {
