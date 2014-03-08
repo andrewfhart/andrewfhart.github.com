@@ -27,7 +27,8 @@ html,body {
 body {
     width: 100%;
     margin: 85px 0 0 0 !important
-    padding:0
+    padding:0;
+    padding-top:70px;
     color:#727375;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
@@ -87,14 +88,8 @@ hr {
     padding: 0;
 }
 
-#topbar {
-    height:5px;
-    background-color:transparent;
-    margin-bottom:5px;
-}
-
 div.row.page-cover {
-    margin-bottom:2em;
+    margin-bottom:3em;
     font-size:1.3em;
     line-height:1.5em;
 }
@@ -106,6 +101,15 @@ div.row.page-cover h2 {
 
 div.row.page-cover blockquote {
     margin-top:1.5em;
+}
+
+.navbar {
+
+}
+
+.navbar h2 {
+    margin-top:8px;
+    padding-top:0px;
 }
 
 #mypic {
@@ -230,6 +234,10 @@ a.button.active-dark:hover {
     height:125px;
 }
 
+.content-section {
+    padding-top:60px;
+}
+
 .section-adverts .thumbnail {
     height:400px;
     border-top:solid 5px #57a;
@@ -286,6 +294,7 @@ a.button.active-dark:hover {
     background-color:#ffdf73;
     padding:3px;
     border-bottom:solid 1px #fc0;
+    margin-top:-18px;
 }
 #banner a {
     color:#000;
