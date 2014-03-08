@@ -194,7 +194,9 @@ a.button.active-dark:hover {
 
 
 .publications.pub-section-journals {
-    margin-top:80px;
+    margin-top:0px;
+    background-color:#fff;
+    padding:10px;
 }
 
 .publications p.with-image {
@@ -215,17 +217,31 @@ a.button.active-dark:hover {
 }
 
 .publications h4 {
-    background-color:#cdcdcd;
-    border-bottom:solid 1px #bcbcbc;
-    border-radius: 3px 3px 0px 0px;
+    background-color:#0077c0;
+    border-bottom:solid 1px #5f92ac;
+    color:#fff;
     padding:8px;
-    font-weight:normal;
-    margin-top:3em;
+    font-weight:bold;
+    margin-top:0em;
+    margin-bottom:2em;
 }
 
 .publications h5 {
-    border-bottom: dotted 1px #ccc;
+    border-bottom: dotted 1px #81b3cc;
+    border-left:solid 25px #7fb2cc;
+    padding: 3px 0px 3px 8px;
     font-size:1.1em;
+    font-weight:bold;
+    color:#5f92ac;
+    margin-top:1em;
+    margin-bottom:2em;
+}
+
+.publications-nav.affix {
+    top:80px;
+}
+.publications-nav.affix-bottom {
+    bottom:120px;
 }
 
 .thumbnail img {
