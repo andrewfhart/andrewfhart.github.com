@@ -15,12 +15,42 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="collapsible-menu-items">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/">Home</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Consulting</a></li>
-        <li><a href="/publications.html">Publications</a></li>
-        <li><a href="#">Photography</a></li>
-        <li><a href="/travel.html">Travel</a></li>
+        {% if page.active == "home" %}
+            <li class="active"><a href="/">Home</a></li>
+        {% else %}
+            <li><a href="/">Home</a></li>
+        {% endif %}
+
+        {% if page.active == "portfolio" %}
+            <li class="active"><a href="#">Portfolio</a></li>
+        {% else %}
+            <li><a href="#">Portfolio</a></li>
+        {% endif %}
+
+        {% if page.active == "consulting" %}
+            <li class="active"><a href="#">Consulting</a></li>
+        {% else %}
+            <li><a href="#">Consulting</a></li>
+        {% endif %}
+
+        {% if page.active == "publications" %}
+            <li class="active"><a href="#">Publications</a></li>
+        {% else %}
+            <li><a href="/publications.html">Publications</a></li>
+        {% endif %}
+
+        {% if page.active == "photography" %}
+            <li class="active"><a href="#">Photography</a></li>
+        {% else %}
+            <li><a href="#">Photography</a></li>
+        {% endif %}
+
+        {% if page.active == "travel" %}
+            <li class="active"><a href="#">Travel</a></li>
+        {% else %}
+            <li><a href="/travel.html">Travel</a></li>
+        {% endif %}
+
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Contact</a></li>
