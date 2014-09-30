@@ -90,7 +90,7 @@ hr {
 
 div.row.page-cover {
     margin-bottom:3em;
-    font-size:1.3em;
+    font-size:1.0em;
     line-height:1.5em;
 }
 
@@ -100,7 +100,7 @@ div.row.page-cover h2 {
 }
 
 div.row.page-cover blockquote {
-    margin-top:1.5em;
+    margin-top:0em;
 }
 
 .navbar {
@@ -304,6 +304,16 @@ a.button.active-dark:hover {
     border-top-color:#B3923B;
 }
 
+.section-portfolio .thumbnail {
+    height:525px;
+}
+
+.section-portfolio .thumbnail img {
+    height:156px;
+    border-radius:3px;
+    margin-top:1.1em;
+}
+
 
 #banner {
     text-align:center; 
@@ -311,6 +321,7 @@ a.button.active-dark:hover {
     padding:3px;
     border-bottom:solid 1px #fc0;
     margin-top:-18px;
+    display:none;
 }
 #banner a {
     color:#000;
