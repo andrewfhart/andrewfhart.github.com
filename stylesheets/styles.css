@@ -251,7 +251,7 @@ a.button.active-dark:hover {
 }
 
 .content-section {
-    padding-top:60px;
+    padding-top:80px;
 }
 
 .section-adverts .thumbnail {
@@ -334,4 +334,76 @@ a.button.active-dark:hover {
     font-size:90%;
     height:250px;
     margin-top:150px;
+}
+
+
+.thumbnail-gallery {
+
+}
+.thumbnail-gallery #travel-carousel {
+
+}
+.thumbnail-gallery .cthumbnail {
+    position:relative;
+    margin-top:auto;
+    margin-bottom:auto;
+}
+.thumbnail-gallery .cthumbnail img {
+    width:700px;
+}
+.thumbnail-gallery .caption {
+    width:700px;
+    padding:0px 10px;
+    position:absolute;
+    bottom:0px;
+    right:0px;
+    margin-top:-10px;
+    background-color:#333;
+    opacity:0.8;
+    color:#fff;
+
+
+}
+
+.portfolio .project-thumbnail {
+    float:right;
+    border:solid 1px #ccc;
+    padding:5px;
+}
+
+
+.portfolio section {
+    background-color:#fff;
+    border-radius:5px;
+    padding:0px 10px;
+}
+
+.portfolio section h2 {
+    padding:10px 0px;
+}
+.portfolio section p {
+    text-align:justify;
+    text-indent:1em;
+}
+.portfolio section p em {
+    background-color:#de8;
+    color:#313131;
+}
+.portfolio .gallery, .portfolio .tech {
+    margin-top:10px;
+}
+.portfolio .gallery img {
+    padding-bottom:10px;
+    margin-bottom:10px;
+    width:560px;
+}
+
+.portfolio .tech ul {
+    line-height:2em;
+    margin-left:0px;
+    padding-left:15px;
+}
+.portfolio .tech ul li {
+    margin-left:0px;
+    padding-left:0px;
 }
