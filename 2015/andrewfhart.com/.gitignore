@@ -6,3 +6,8 @@ codekit-config.json
 node_modules
 _asset_bundler_cache
 .sass-cache
+.jekyll-asset-cache
+vendor
+#
+# Ignore images directory (will pull in separately)
+images
