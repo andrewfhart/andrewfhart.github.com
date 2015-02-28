@@ -1,11 +1,8 @@
-{% if page.author %}
-  {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %}
-{% endif %}
-
 <div class="author-image">
-	<img src="{{ site.url }}/images/{{ author.avatar }}" alt="{{ author.name }}">
+	<img src="/images/{{ site.owner.avatar }}" alt="{{ site.owner.name }}">
 </div><!-- ./author-image -->
 <div class="author-content">
-	<h3 class="author-name" >Written by {% if author.web %}<a href="{{ author.web }}" itemprop="author">{{ author.name }}</a>{% else %}<span itemprop="author">{{ author.name }}</span>{% endif %}</h3>
-	<p class="author-bio">{{ author.bio }}</p>
+	<h3 class="author-name" >Written by <span itemprop="author">{{ site.owner.name }}</span></h3>
+	<p class="author-bio">{{ site.owner.bio }}</p>
+  {% if site.owner.twitter %}<p class="author-follow"><a href="https://twitter.com/{{ site.owner.twitter }}" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @{{ site.owner.twitter }}</a></p>{% endif %}
 </div><!-- ./author-content -->
