@@ -11,7 +11,7 @@
 // Container for formatted response data from the Flickr API
 var latestPhotos = [];
 
-var displayCount = 6;
+var displayCount = 14;
 
 // Parse and format the response from the Flickr API
 function jsonFlickrFeed (response) {
@@ -23,21 +23,30 @@ function jsonFlickrFeed (response) {
 // Once the DOM is ready, build the gallery HTML.
 $(document).ready(function () {
 
+  var imageBoxes = [];
+
+  $('#photos').masonry({
+    columnWidth: function( containerWidth ) {
+      return containerWidth / 3;
+    },
+    itemSelector: '.photo',
+    gutter:20
+  });
+
   // Process the latest photos obtained from the Flickr API
   for (var i = 0; i < displayCount; i++) {
-    $('#photos').append(
+    imageBoxes.push(
       '<div class="photo">'
       + '<a href="' + latestPhotos[i].link + '" target="_new">'
       + '<img src="' + latestPhotos[i].media.m + '" title="' + latestPhotos[i].title + '"/>'
       + '</a>' +
       '</div>'
-      );
+    );
   }
 
-  $('#photos').masonry({
-    columnWidth: 110,
-    itemSelector: '.photo',
-    gutter:15
-  });
+  $('#photos')
+    .append(imageBoxes)
+    .masonry('appended', $(imageBoxes))
+    .masonry('reload');
 
 });
