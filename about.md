@@ -26,7 +26,7 @@ Andrewfhart.com has been on the web in one form or another since 2005. I bought 
 
 ## Contact Me
 
-Have more questions? I maintain a list of [Frequently Asked Questions]({{ site.url }}/faqs/), which might have what you're looking for. For everything else, a short message via Twitter would be best. For something longer feel free to email me and I will respond when I can.
+Have more questions? A short message via LinkedIn or Twitter would be best. For something longer feel free to email me and I will respond when I can.
 
 <a href="https://twitter.com/intent/tweet?screen_name=andrewfhart" class="twitter-mention-button" data-size="large" data-related="andrewfhart">Tweet to @andrewfhart</a>
 
