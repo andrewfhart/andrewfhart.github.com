@@ -545,7 +545,76 @@ if (playerTurn) {
 Click to [download the program in its current state](https://gist.github.com/andrewfhart/e79eb09682313c0cf94c).
 
 
+Step 6: Knowing when to Quit
+============================
 
+Well, we've come a *long* way so far: we've got a program that can hold and display the internal state of the game, a way to ask for and validate user input, and even a way for the computer to "intelligently" choose its own moves. According to our blueprint, what we need now is a way to know when the game is over. 
+
+Let's do the same thing we did earlier: plan how we'd _like_ it to look, and then structure the implementation to make that work. 
+
+The relevant portion of our `main` loop looks like this, in blueprint form:
+{% highlight c++ %}
+  ...
+  // c. check if the current player has just won
+  // d. swap current player
+}
+
+// 3. print final game result message
+{% endhighlight %}
+
+Well, what if we had a function called `isGameOver` that would be able to determine whether or not the game was still valid? That would be useful here. It would be even more useful if that function also told us _how_ the game ended, particularly because we'll soon need to know that information in order to print the final game message. Perhaps the two could be combined into one, since we'll discover how the game ended in the process of determining if it in fact ended at all.
+
+Let's review the four possible states the game can be in:
+
+1. In progress - the game has not ended yet: no one has won, and there are valid moves left
+2. User won - the user has successfully marked 3 cells in a row
+3. Computer won - the computer has successfully marked 3 cells in a row
+4. Draw - neither the user or the computer was successful, but there are no valid moves left
+
+So, we might design a function called `isGameOver` to return an `int` value in the range `0-3` to account for each of the four possible outcomes. Such a function would, of course, need to be given the current state of the board (`board`) so that it could do the calculations. This seems reasonable. If we _did_ have such a function, our game flow blueprint could be updated as follows:
+
+{% highlight c++ %}
+...
+// c. check if the game should end
+if (isGameOver(board) > 0) {
+  break; // game is no longer in progress, break out of game loop
+} else {
+  // d. swap current player (and stay in loop to continue playing)
+}
+...
+{% endhighlight %}
+
+Notice I changed the text of the blueprint to "check if the game should end" because it more directly corresponds with what we actually want now. As I said in step 0, blueprints are just that: guides. As the program evolves, they may change.
+
+While we're here - let's just handle (d.) since it is so simple. Our `playerTurn` variable is holding information on whether or not it is currently the player's turn (`true`) or the computer's turn (`false`). To swap players after a turn, we simply need to set the value of `playerTurn` to `true` if it was `false`, or to `false` if it was `true`. Why don't you do that now.
+
+OK, so now we need to actually implement this `isGameOver` function we've been talking about. We know it returns an integer. We know the value of that integer will be `0`, `1`, `2`, or `3` depending on whether the game is still in progress, the user has won, the computer has won, or the game ended in a tie. We know it needs to be given the current state of the board in order to figure any of this out. Here's a reasonable scaffold for the `isGameOver` function. Use your knowledge of logic, of tic-tac-toe rules, and of multi-dimensional arrays to determine how to get the computer to know when the game is over.
+
+{% highlight c++ %}
+/**
+ * Determine the status of the game given the current state
+ * of the board. The status can be one of 4 values:
+ *   0 - valid: no one has won yet, and there are valid moves remaining
+ *   1 - invalid, user has won
+ *   2 - invalid, computer has won
+ *   3 - invalid, draw - no one has won but there are no valid moves remaining
+ *
+ * @param  int[3][3] board   The current state of the board
+ * @return int               The status of the board in its current state
+ */
+int isGameOver (int board[][3]) {
+  // your implementation here:
+
+  // one suggested approach:
+  // For each of the two players, determine if that player has "won". If it has, return the appropriate integer value
+  // If no one has won, determine if there are any moves left. 
+  // If there are valid moves left, return the integer value for game in progress
+  // If there are no valid moves left, return the integer value for a draw (tie)
+}
+{% endhighlight %}
+
+Click to [download the program in its current state](#).
+(Solutions will be made available after 11/21)
 
 
 
