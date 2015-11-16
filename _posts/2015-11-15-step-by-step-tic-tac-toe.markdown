@@ -401,7 +401,8 @@ if (row < 0 || row > 2) {
 }
 {% endhighlight %}
 
-Now, we said earlier that we want the _result_ of calling `nextPlayerMove` to be a valid update to the current state of the board. In other words, we need to handle all validation _inside_ this function. What should we do, then, when the user gives us bad input? Well, one solution would be to implement a loop, and continue to ask the user for input until the user finally gives us something that validates. That would be a _good_ solution, in this case, because all of the logic for handling user input and validation of that input is neatly wrapped up in one function. The rest of the program can call this function and be confident we'll leave the board in a good (valid) state. See if you can figure out how to implement the loop necessary to ensure that all of the input is properly valid. Keep in mind the three criteria:
+Now, we said earlier that we want the result of calling `nextPlayerMove` to be a valid update to the current state of the board. In other words, we need to handle all validation _inside_ this function. What should we do, then, when the user gives us bad input? Well, one solution would be to implement a loop, and continue to ask the user for input until the user finally gives us something that validates. That would be a _good_ solution, in this case, because all of the logic for handling user input and validation of that input is neatly wrapped up in one function. The rest of the program can call this function and be confident we'll leave the board in a good (valid) state. See if you can figure out how to implement the loop necessary to ensure that all of the input is properly valid. Keep in mind the three criteria:
+
 1. The coordinate of the row must be between 0 and 2
 2. The coordinate of the column must be between 0 and 2 (but given as A, B, or C)
 3. The value of the corresponding location in `board` must be empty (`0`)
