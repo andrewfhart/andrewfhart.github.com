@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: longform
 title:  "Step-by-Step Tic-Tac-Toe"
 date:   2015-11-15 17:38:12
 categories: cs002 tutorial
