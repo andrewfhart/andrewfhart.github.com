@@ -8,7 +8,7 @@ categories: cs002 tutorial
 Overview (Step 0)
 =================
 
-One of the most challenging aspects of learning to program is not the strange and unfamiliar syntax of the language, but 
+![Tic-tac-toe](http://i.imgur.com/ODp2jKt.png) One of the most challenging aspects of learning to program is not the strange and unfamiliar syntax of the language, but 
 rather the strange and unfamiliar way of thinking about problems. We take so much for granted when we communicate
 with one another, because we know the person we're communicating with will be able to fill in the gaps. A computer, however,
 being a machine, must have everything explained to it literally, and in great detail. This forces us to think carefully about
