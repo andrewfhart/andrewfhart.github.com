@@ -272,3 +272,22 @@ ul.publication-list {
     padding-top:0px;
   }
 }
+
+article.post-content {
+  
+  p {
+    line-height: 220%;
+    font-size: 110%;
+    text-align:justify;
+    text-indent:15px;
+  }
+
+  h2 {
+    margin-top:35px;
+  }
+  
+  pre {
+    margin: 30px 0px;
+  }
+}
+
