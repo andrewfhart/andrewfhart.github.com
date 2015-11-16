@@ -188,3 +188,89 @@ Click to [download the program in its current state](https://gist.github.com/and
 
 
 
+Step 3: Program Flow
+====================
+
+Alright, at this point you should have convinced yourself that the board works as expected, as long as the inputs
+correspond to our assumptions. Let's revisit the `main` function and try to determine what the program flow looks
+like as a whole. In this exercise, we're going to think about what it means to play tic-tac-toe: what happens, 
+what order do things happen in, and how do we know when we're done?
+
+For complicated programs, this kind of thinking is best done well away from a keyboard, where you're too tempted to
+start writing code. Use a pencil and paper, a whiteboard, or anything where you can really explore the problem and 
+draw pictures and diagrams to describe what is going on.
+
+Since Tic-tac-toe is relatively simple, I like to organize my thoughts by inserting comments directly in the 
+`main` function. These serve as placeholders for things I'll come back and implement. Generally, each of these 
+comments represents one of the sub-problems we talked about in Step 0.
+
+Remember, the specifics of the program flow _will_ change and evolve as you get into your implementation. These
+comments are here to help you remember the big picture. It's fine if they change over the course of building
+out the program.
+
+What are the main steps of the program? At the highest level, they could be described as:
+
+1. We'll need to determine who goes first. Either the user or the computer. 
+2. We'll need to play the game, with each user taking turns making moves
+3. We'll need to say who won
+
+Right there, we've identified a couple of pieces of information we'll need to keep track of. Can you think of
+what they are?
+
+1. We need a way to store "whose turn is it right now?" A `bool` variable might work nicely here, since there are only two options: the user or the computer
+2. We need a loop of some sort to help us progress through the game, since it is a turn-based game.
+3. We'll need a way to keep track of "is the game over?" A `bool` variable might work nicely here too, for now, since the game is either over, or it isn't. When it comes time to say "who won" there are actually 3 outcomes: the `user`, the `computer`, or a `draw` or tie. So we might have to update this use an `int` or `enum`.
+
+Before we move on, let's take a moment to dig into step (2) a bit more. What does "we'll need to play the game" really mean? Well, we could think of it as the following four things happening again and again, in a loop, as long as the game isn't over:
+
+1. we draw the board in its current state
+2. current player makes a move
+3. we check if the current player just won the game
+4. we swap the current player so the other player becomes the current player
+
+And look - we already have (1) in place! That's our `drawBoard` function. Cool! Now we can start to arrange all of this information in our `main` function, and our game's main loop is really starting to take shape:
+
+{% highlight c++ %}
+int main (int argc, char* argv[])
+{
+  // State variables
+  //
+  // Board:
+  //     0   1   2
+  //   +---+---+---+
+  // 0 |   |   | x | x = board[0][2]
+  //   +---+---+---+
+  // 1 |   |   |   |
+  //   +---+---+---+
+  // 2 |   |   |   |
+  //   +---+---+---+
+  //
+  // Each board square will be in one of three possible
+  // states:  0=empty, 1=owned by 'x', 2=owned by 'o'.
+  int board[3][3] = {};
+
+  // Flag to determine whether or not the game is finished
+  // false: game should end: someone has won or there are no more valid moves
+  // true:  game may continue
+  bool gameIsValid = true;
+
+  // Flag to determine whose turn it is
+  // false: it is the computer's turn to make a move
+  // true:  it is the player's turn to make a move
+  bool playerTurn = true;
+
+  /* Game Flow */
+  // 1. determine who goes first
+  // 2. Enter the main game "loop"
+  while (gameIsValid) {
+    // a. draw the board
+    drawBoard(board);
+    // b. current player makes a move
+    // c. check if the current player has just won
+    // d. swap current player
+  }
+  // 3. print final game result message
+}
+{% endhighlight %}
+
+Click to [download the program in its current state](https://gist.github.com/andrewfhart/a5728d2a916a386264ea).
