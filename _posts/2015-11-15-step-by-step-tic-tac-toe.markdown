@@ -98,7 +98,7 @@ int main (int argc, char* argv[])
 OK - We've defined a really simple program that does just two things: (1) it declares a 2-dimensional array (3x3) of integers
 which we'll use to represent the current "state" of each of the cells on our board. Hopefully you've thought a bit about the 
 cells in the planning phase above. They can be in one of three states: "empty", "owned by the player", "owned by the computer".
-When it comes to drawing the board, we'll represent those three states with either an empty space ` `, an `x`, or an `o`.
+When it comes to drawing the board, we'll represent those three states with either an empty space, an `x`, or an `o`.
 The second thing this program does is call a (currently non-existant) function `drawBoard(board)`, passing to it as a parameter 
 the 2D array of integers we just defined. This seems reasonable: in order to properly draw the board, we're going to need to
 know the current state of each of the cells in the board -- and this is what our `board` variable holds.
