@@ -288,21 +288,21 @@ generated number to ensure this happens with equal probability.
 
 We know how to implement a random number generator for values between `0` and `some_number`, exclusive:
 
-```
+{% highlight c++ %}
 int val = rand() % some_num; 
-```
+{% endhighlight %}
 
 So in this case, since we want to generate either a 0 or a 1 for our boolean `playerTurn` variable, we could do:
 
-```
+{% highlight c++ %}
 playerTurn = rand() % 2;
-```
+{% endhighlight %}
 
 That should do it! But we have to remember two things: we need to `#include <cstdlib>` to get access to the `rand()` function, and we need to remember to randomize the seed via `srand()` so that we actually get random numbers. Remember also that if you choose to use the current time in seconds as your seed, you'll need to `#include <ctime>` as well: `srand(time())`.
 
 So, with that in place, our game loop now looks like:
 
-```
+{% highlight c++ %}
 ...
 /* Game Flow */
 
@@ -320,6 +320,6 @@ while (gameIsValid) {
 
 // 3. print final game result message
 ...
-```
+{% endhighlight %}
 
 Click to [download the program in its current state](https://gist.github.com/andrewfhart/cb3ce23ed91897f50e37).
