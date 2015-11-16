@@ -140,7 +140,7 @@ Click to [download the program in its current state](https://gist.github.com/and
 Step 1: Making the board work
 =============================
 
-Alright, so we've got a board displaying now, and it looks good: except all the cells are empty. If we agree that cells can be in one of three positions, we could use an integer to define it. Perhaps `0` means "empty", `1` means "owned by the user", and `2` means "owned by the computer." In that case we could improve our `drawBoard` function to better reflect the current state 
+Alright, so we've got a board displaying now, and it looks good: except all the cells are empty. If we agree that cells can be in one of three positions, we could use an integer to define it. Perhaps `0` means "empty", `1` means "owned by the user", and `2` means "owned by the computer." If that's the case, we'd better make sure we use the same mapping in our `board` parameter, so that the information that gets passed to `drawBoard` matches our assumptions. If we assume `board` contains the mapping as we just described it, we could improve our `drawBoard` function to better reflect the current state 
 of the board (as represented by the `board` parameter). How would you do it? Think about it before you read on.
 
 {% highlight c++ %}
@@ -162,7 +162,7 @@ void drawBoard(int board[][3]) {
 }
 {% endhighlight %}
 
-We've made an assumption here that `x` is always going to be the character used to represent the user, and `o` will represent moves made by the computer. That's fine, of course, but it's an example of some of the things we should be thinking about in
+We've made the decision here that cells with a `1`, which we said above represent cells owned by the user, will be represented on the board by the character `x`, and cells with a `2`, which we said above represent cells owned by the computer, will be represented on the board by the character `o`. That's fine, of course, but it's an example of some of the things we should be thinking about in
 the planning phase. We're also using raw numbers (e.g.: `1` and `2`) to represent states. We could (and probably should!) use
 an `enum` for this instead, but we can get to that later. We're sketching. 
 
@@ -197,7 +197,7 @@ correspond to our assumptions. Let's revisit the `main` function and try to dete
 like as a whole. In this exercise, we're going to think about what it means to play tic-tac-toe: what happens, 
 what order do things happen in, and how do we know when we're done?
 
-For complicated programs, this kind of thinking is best done well away from a keyboard, where you're too tempted to
+For complicated programs, this kind of thinking is best done well away from a keyboard, where you're less tempted to
 start writing code. Use a pencil and paper, a whiteboard, or anything where you can really explore the problem and 
 draw pictures and diagrams to describe what is going on.
 
@@ -279,8 +279,8 @@ Click to [download the program in its current state](https://gist.github.com/and
 Step 3: Start filling in the gaps
 =================================
 
-Now that we've laid everything out, and spent time thinking about the problem and planning our solution, it's time to
-start imeplementing our solution in code. Fortunately, thanks to our work so far, we've got a blueprint for what
+Now that we've laid everything out, and have spent time thinking about the problem and planning our solution, it's time to
+start imeplementing our solution in code. Fortunately, thanks to the work we've done so far, we now have a blueprint for what
 needs to be done, so all we really have to do is think of a good way to implement it. Let's start with something 
 easy: determining who goes first.
 
@@ -328,11 +328,11 @@ Click to [download the program in its current state](https://gist.github.com/and
 Step 4: Getting Input from the User
 ===================================
 
-According to our blueprint, the next unfinished task is the task of the "current player makes a move." As you think about this, you should realize that this step actually has to have two different implementations: the current player might be the user on one turn, and the computer on the next. Making a move has very different implementations depending on who our current player is. How could we structure this portion of our program to account for this? One way would be to just write everything we need for both implementations right there, in the main loop. 
+According to our blueprint, the next unfinished task is the task of the "current player makes a move." As you think about this, you should realize that this step actually has two different interpretations: the current player might be the user on one turn, and the computer on the next. Making a move has very different implications depending on who our current player is. How could we structure this portion of our program to account for this? One way would be to just write everything we need for both implementations right there, in the main loop. 
 
-That would not be very clean, though, and it would make our main loop harder to understand. It would be much nicer if we could find a way to structure things so that "getting the next move" was a function. More specifically, since we want our functions to have good design, and that means making sure they do one thing, and only one thing, we probably want to have _two_ functions: one to ask for the next move from the user when it's the user's turn, and one to calculate the next move the computer should make when it's the computer's turn.
+That would not be very clean, though, and it would make our main loop harder to understand. It would be much nicer if we could find a way to structure things so that "getting the next move" was a function. We want our functions to have good design, though, and that means making sure each function does one thing, and only one thing. So in this case, we probably want to have _two_ functions: one to ask the user for the next move when it's the user's turn, and one to calculate the next move when it's the computer's turn.
 
-Since we already have `playerTurn` to tell us whose turn it is, something like this would be really nice:
+Since we already have the `playerTurn` variable telling us whose turn it is, something like this would be really nice:
 
 {% highlight c++ %}
 if (playerTurn) {
@@ -347,11 +347,12 @@ if (playerTurn) {
 
 That's the wonderful thing about breaking problems down into sub-problems. We can sit here and think specifically about individual things like "how would i _like_ this to work?" without worrying too much about all of the other parts of the problem.  
 
-In this case, we can calculate the player's next move by calling a function we'll write (`playerNextMove`) and the computer's next move by calling a different function we'll write (`computerNextMove`). You may notice I've included the `board` as a parameter to each function. Why? Well - because it seemed useful to me, based on how I'm thinking about _what it means_ to choose a valid move. The keyword is valid: the user is not free to choose any cell on the board! The user may only choose spaces that have not previously been chosen. In other words: we need to know which cells are empty in order to be able to know that the user has given us a good input. Since `board` is our container for information about the current state of every cell, it makes sense that we provide it to the function. 
+In this case, we can calculate the player's next move by calling a function we'll write (`playerNextMove`) and the computer's next move by calling a different function we'll write (`computerNextMove`). You may notice I've included the `board` as a parameter to each function. Why? Well - because it seemed useful to me, based on thinking about _what it means_ to choose a valid move. The key word here is *valid*: our user is not free to choose any cell on the board at any time! The user may only choose spaces that have not previously been chosen. In other words: we need to know which cells are empty in order to be certain that the user has given us good input. Since `board` is our container for information about the current state of every cell, it makes sense that we provide it to the function. 
 
 Another thing to note about the idea of validation. Validating user input, in this case, is entirely part of "getting the next player move." As such, we should handle validation _inside_ the `playerNextMove()` function, and not pollute the outside world with the concern of validating the result. In other words, the rest of the program should be able to confidently assume that the result of calling `playerNextMove()` leaves the board in a valid state.
 
-There's some nice symmetry to our implementation now. Looking at the code, it reads (almost) like English: 
+There's some nice symmetry to our implementation now. Looking at the code, it reads (almost) like English:
+
 > If it is now the player's turn, get the player's next move using the current state of the board. Otherwise (else), it must be the computer's turn, so get the computer's next move using the current state of the board.
 
 Let's turn now to the `nextPlayerMove()` function. Since we're passing the current state of the board via `board`, and since `board` is an array, we can manipulate the variable directly to update the state, once we've validated the user input. So, in other words, `nextPlayerMove()` can be a `void` function since we'll directly update `board`:
@@ -368,7 +369,7 @@ void nextPlayerMove(int board[][3]) {
 }
 {% endhighlight %}
 
-OK, again, we've created a scaffold or blueprint of what we want to have happen in this function. It allows us to now focus on the main implementation. We could simply `cin` the values for starters, but wait - have we thought about how we want the user to give us input? The board we drew uses letters for columns and rows for numbers, like Excel. We'd better use the same assumptions here when we're asking the user to enter input. Hm.. it's easier for _us_ if everything were numbers (since those can be used as direct array indices), but it's easier for our user if we use one letter and one number. Well, we know there's a very limited number of "correct" values, so we could simply translate for the user:
+OK, again, we've created a scaffold or blueprint of what we want to have happen in this function. It allows us to now focus on the implementation. We could simply `cin` the values for starters, but -- have we thought about how we want the user to give us input? The board we drew earlier uses letters for columns and rows for numbers, like Excel. We'd better use the same assumptions here when we're asking the user to enter input. It would be easier for _us_ if everything were numbers (since those can be used as direct array indices), but it's easier for our user if we use one letter and one number. Well, we know there's a very limited number of "correct" values, so we could simply translate for the user:
 
 {% highlight c++ %}
 void nextPlayerMove(int board[][3]) {
@@ -432,8 +433,8 @@ void nextPlayerMove(int board[][3]) {
   cout << "Type your move as two characters separated by a space (ex: A 1)" << endl;
   
   do {
-    col_valid;         // assume correct input until proven wrong via tests later
-    row_valid;         // ...
+    col_valid = true;     // assume correct input until proven wrong via tests later
+    row_valid = true;     // ...
     // Obtain input from the user (one character for column, one int for row)
     cin >> col_c >> row;
     
@@ -528,7 +529,7 @@ Great. We've just programmed some "artificial intelligence" into our game. It no
 
 Notice how all of the functions I've written have *lots* of comments? Each one has a little block comment on top that describes what it does, and most of them have inline comments to clarify the intention of individual lines. I bet it made it easier for you to follow. You should program this way too. Make things easier on yourself and others. 
 
-Let's make sure we can call this function from our `main` function:
+Before we finish, let's make sure we can call this function from our `main` function:
 
 {% highlight c++ %}
 ...
@@ -547,14 +548,14 @@ Click to [download the program in its current state](https://gist.github.com/and
 
 Step 5.5: Cleaning up our act
 =============================
-We've done pretty well so far, but there is one problem with our code that we should address before we go further: we use a lot of magic numbers instead of `enum` values. `enum` was _designed_ to allow programmers to avoid putting random "magic" numeric values all throughout their programs. Here's a perfect example: 
+We've done pretty well so far, but there is one problem with our code that you might have spotted, and that we should address before we go further: we use a lot of magic numbers instead of `enum` values. `enum` was _designed_ to allow programmers to avoid putting random "magic" numeric values all throughout their programs. Here's a perfect example of the problem: 
 
 {% highlight c++ %}
 // Update the board state
 board[row][col] = 2; //  computer is 2, uses symbol 'o' when drawn on board.
 {% endhighlight %}
 
-We're trying to say that the computer should be marked as the owner of this cell. But it is _not_ clear just by looking at it that '2' means 'computer'. If we had an enum like this, defined outside of `main` and outside of any functions so that we can use it anywhere:
+We're trying to say that the computer should be marked as the owner of this cell. But it is _not_ clear just by looking at it that `2` means "computer". If we had an `enum`, defined outside of `main` and outside of any functions so that we can use it anywhere, like this:
 
 {% highlight c++ %}
 /** 
@@ -570,7 +571,7 @@ enum {EMPTY, USER, COMPUTER};  // the compiler assigns EMPTY=0, USER=1, and COMP
 board[row][col] = COMPUTER; //  computer owns this cell now.
 {% endhighlight %}
 
-Nothing changed behind the scenes - the compiler still sees an integer. But we as programmers can deal with *words* which we're much more comfortable with. Why don't you take a moment to update your code to use the `enum` above, and make it much clearer and easier to maintain.
+Nothing changed behind the scenes - the compiler still sees an integer. But we as programmers can deal with *words* that we're much more comfortable with. Why don't you take a moment to update your code to use the `enum` above, and make it much clearer and easier to maintain.
 
 
 Step 6: Knowing when to Quit
@@ -614,9 +615,9 @@ Hmm.. this seems like another good use case for using an enum. Let's define one 
 enum {IN_PROGRESS=0, USER_WON=USER, COMPUTER_WON=COMPUTER, DRAW};
 {% endhighlight %}
 
-Notice how we manually specified values this time? This allows us to specify that `USER_WON` should be set to whatever `USER` is, and `COMPUTER_WON` should be set to whatever `USER` is, etc. Remember, `enum`s just provide *aliases* for integer values.
+Notice how we manually specified values this time? This allows us to specify that `PROGRESS` should be `0`, and `USER_WON` should be set to whatever `USER` is (defined in the other `enum`), and `COMPUTER_WON` should be set to whatever `USER` is, etc. Remember, `enum`s just provide *aliases* for integer values.
 
-So, we might design a function called `isGameOver` to return an `int` value in `{IN_PROGRESS, USER_WON, COMPUTER_WON, DRAW}` to account for each of the four possible outcomes. Such a function would, of course, need to be given the current state of the board (`board`) so that it could do the calculations. This seems reasonable. If we _did_ have such a function, our game flow blueprint could be updated as follows:
+So, we might design a function called `isGameOver` to return an `int` value that was one of `IN_PROGRESS`, `USER_WON`,  `COMPUTER_WON`, or `DRAW` to account for each of the four possible outcomes. Such a function would, of course, need to be given the current state of the board (`board`) so that it could do the calculations. This seems reasonable. If we _did_ have such a function, our game flow blueprint could be updated as follows:
 
 {% highlight c++ %}
 ...
@@ -660,6 +661,21 @@ int isGameOver (int board[][3]) {
 
 Click to [download the program in its current state](#).
 (Solutions will be made available after 11/21)
+
+Step 7: Printing the final message
+===================================
+
+We're getting to the very end here... more coming soon.
+
+Step 8: Getting Strategic
+=========================
+
+In which we implement some better algorithms for choosing the next cell... more coming soon
+
+Step 9: Wrapping up
+=========================
+
+In which we put the final touches, and talk about testing... more coming soon
 
 
 
