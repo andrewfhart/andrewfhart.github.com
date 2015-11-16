@@ -519,7 +519,8 @@ void nextComputerMove(int board[][3]) {
   } while (board[row][col] != 0); // If taken, try again
 
   // Update the board state
-  board[row][col] = 2; //  computer is always 'o'
+  board[row][col] = 2; //  computer is always 'o'. Super ugly magic numbers
+                       //  make an appearance again. We'll fix this next
 }
 {% endhighlight %}
 
@@ -543,6 +544,33 @@ if (playerTurn) {
 {% endhighlight %}
 
 Click to [download the program in its current state](https://gist.github.com/andrewfhart/e79eb09682313c0cf94c).
+
+Step 5.5: Cleaning up our act
+=============================
+We've done pretty well so far, but there is one problem with our code that we should address before we go further: we use a lot of magic numbers instead of `enum` values. `enum` was _designed_ to allow programmers to avoid putting random "magic" numeric values all throughout their programs. Here's a perfect example: 
+
+{% highlight c++ %}
+// Update the board state
+board[row][col] = 2; //  computer is 2, uses symbol 'o' when drawn on board.
+{% endhighlight %}
+
+We're trying to say that the computer should be marked as the owner of this cell. But it is _not_ clear just by looking at it that '2' means 'computer'. If we had an enum like this, defined outside of `main` and outside of any functions so that we can use it anywhere:
+
+{% highlight c++ %}
+/** 
+ * Enumerate the possible states of a cell in the game. 
+ */
+enum {EMPTY, USER, COMPUTER};  // the compiler assigns EMPTY=0, USER=1, and COMPUTER=2
+{% endhighlight %}
+
+... then we could use *words* instead of numbers in our program, and things would be much clearer: 
+
+{% highlight c++ %}
+// Update the board state
+board[row][col] = COMPUTER; //  computer owns this cell now.
+{% endhighlight %}
+
+Nothing changed behind the scenes - the compiler still sees an integer. But we as programmers can deal with *words* which we're much more comfortable with. Why don't you take a moment to update your code to use the `enum` above, and make it much clearer and easier to maintain.
 
 
 Step 6: Knowing when to Quit
@@ -571,7 +599,24 @@ Let's review the four possible states the game can be in:
 3. Computer won - the computer has successfully marked 3 cells in a row
 4. Draw - neither the user or the computer was successful, but there are no valid moves left
 
-So, we might design a function called `isGameOver` to return an `int` value in the range `0-3` to account for each of the four possible outcomes. Such a function would, of course, need to be given the current state of the board (`board`) so that it could do the calculations. This seems reasonable. If we _did_ have such a function, our game flow blueprint could be updated as follows:
+Hmm.. this seems like another good use case for using an enum. Let's define one for this:
+
+{% highlight c++ %}
+/**
+ * Enumerate possible states the game can be in. The game is either
+ *  IN_PROGRESS  - neither player has won, and there are still valid moves
+ *  USER_WON     - user won by matching three in a row
+ *  COMPUTER_WON - computer won by matching three in a row
+ *  DRAW         - neither player has won, but there are no valid moves left
+ * 
+ * See the function `isGameOver` for related logic
+ */
+enum {IN_PROGRESS=0, USER_WON=USER, COMPUTER_WON=COMPUTER, DRAW};
+{% endhighlight %}
+
+Notice how we manually specified values this time? This allows us to specify that `USER_WON` should be set to whatever `USER` is, and `COMPUTER_WON` should be set to whatever `USER` is, etc. Remember, `enum`s just provide *aliases* for integer values.
+
+So, we might design a function called `isGameOver` to return an `int` value in `{IN_PROGRESS, USER_WON, COMPUTER_WON, DRAW}` to account for each of the four possible outcomes. Such a function would, of course, need to be given the current state of the board (`board`) so that it could do the calculations. This seems reasonable. If we _did_ have such a function, our game flow blueprint could be updated as follows:
 
 {% highlight c++ %}
 ...
@@ -588,16 +633,16 @@ Notice I changed the text of the blueprint to "check if the game should end" bec
 
 While we're here - let's just handle (d.) since it is so simple. Our `playerTurn` variable is holding information on whether or not it is currently the player's turn (`true`) or the computer's turn (`false`). To swap players after a turn, we simply need to set the value of `playerTurn` to `true` if it was `false`, or to `false` if it was `true`. Why don't you do that now.
 
-OK, so now we need to actually implement this `isGameOver` function we've been talking about. We know it returns an integer. We know the value of that integer will be `0`, `1`, `2`, or `3` depending on whether the game is still in progress, the user has won, the computer has won, or the game ended in a tie. We know it needs to be given the current state of the board in order to figure any of this out. Here's a reasonable scaffold for the `isGameOver` function. Use your knowledge of logic, of tic-tac-toe rules, and of multi-dimensional arrays to determine how to get the computer to know when the game is over.
+OK, so now we need to actually implement this `isGameOver` function we've been talking about. We know it returns an integer. We know the value of that integer will be `IN_PROGRESS`, `USER_WON`, `COMPUTER_WON`, or `DRAW` depending on whether the game is still in progress, the user has won, the computer has won, or the game ended in a tie. We know it needs to be given the current state of the board in order to figure any of this out. Here's a reasonable scaffold for the `isGameOver` function. Use your knowledge of logic, of tic-tac-toe rules, and of multi-dimensional arrays to determine how to get the computer to know when the game is over.
 
 {% highlight c++ %}
 /**
  * Determine the status of the game given the current state
  * of the board. The status can be one of 4 values:
- *   0 - valid: no one has won yet, and there are valid moves remaining
- *   1 - invalid, user has won
- *   2 - invalid, computer has won
- *   3 - invalid, draw - no one has won but there are no valid moves remaining
+ *   IN_PROGRESS  - valid: no one has won yet, and there are valid moves remaining
+ *   USER_WON     - invalid, user has won
+ *   COMPUTER_WON - invalid, computer has won
+ *   DRAW         - invalid, draw - no one has won but there are no valid moves remaining
  *
  * @param  int[3][3] board   The current state of the board
  * @return int               The status of the board in its current state
@@ -606,10 +651,10 @@ int isGameOver (int board[][3]) {
   // your implementation here:
 
   // one suggested approach:
-  // For each of the two players, determine if that player has "won". If it has, return the appropriate integer value
+  // For each of the two players, determine if that player has "won". If it has, return the appropriate enum value
   // If no one has won, determine if there are any moves left. 
-  // If there are valid moves left, return the integer value for game in progress
-  // If there are no valid moves left, return the integer value for a draw (tie)
+  // If there are valid moves left, return the enum value for game in progress
+  // If there are no valid moves left, return the enum value for a draw (tie)
 }
 {% endhighlight %}
 
