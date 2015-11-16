@@ -665,7 +665,169 @@ Click to [download the program in its current state](#).
 Step 7: Printing the final message
 ===================================
 
-We're getting to the very end here... more coming soon.
+We only have one piece of our original blueprint left! Once the game ends, we want to display a message to the user that let's them know the outcome. Let's think for a moment about what that might involve:
+
+1. We need to know how the game ended (did the user win? was it a tie?)
+2. We want to show the final state of the board so the user can see exactly how things ended
+3. We want to tell the user something if they won, and something else if they lost
+
+As you might have already noticed, we've already implemented a lot of what we need in that list. Our `isGameOver` function from Step 6 will tell us how the game ended (by returning either `USER_WON`, `COMPUTER_WON`, or `DRAW`), and we can show the final state of the board by calling our trusty `drawBoard` function and passing it, as you'd expect, the `board` variable which holds the final state of the board.
+
+One challenge we'll face though, with our current design, is the fact that we're not capturing the result of `isGameOver`. Instead we're feeding it directly into the condition of an `if` statement. That will work for the purposes of the `if` statement, but we want that value later too - so that we can determine which final message to display.
+
+There are two things we could do here to improve our code. First we should update the logic in (c.) so that we can use an `enum` value instead of a "magic" number. Let's change the condition in the `if` to the following, which is equivalent, but more clear:
+
+{% highlight c++ %}
+if (isGameOver(board) != IN_PROGRESS) {
+{% endhighlight %}
+
+But this still feels awkward. Remember in Step 0 when I said writing code was like speaking to another person, and that some things just don't feel right at times? This is one of those times, at least for me. The phrasing just seems a bit off: 
+
+> If is the game over based on the current status of the board is not in progress, stop executing the game loop.
+
+Weird. And we still have the problem that we're passing the result of the `isGameOver` function directly into the condition of the `if` rather than capturing it in a variable that will allow us to use it later. We certainly want to fix that, which means we need to create a new variable to determine the status of the game. Now, what should we call it? 
+
+Speaking completely honestly, _naming things_ is one of the hardest problems in practical computer science. It's surprisingly hard to give things meaningful, unambiguous names that will be understood and interpreted the same way by everyone who reads them. Take our current situation, for example. We'd like to have a variable to hold the status of the game at the end of every loop iteration, and to use that variable to (1) determine whether or not to continue looping, and (2) determine which message to show to the user once the game has ended. This variable needs to hold the current status of the game, so `gameStatus` seems like a good choice. What type should it be? Well, the game status has been encoded into an enumeration of integers, so `gameStatus` should probably be an `int` so that it can faithfully store that information.
+
+Notice though, that we already have the concept of game status in our code, but we've given it a different name: `gameIsValid`. Similar concept, different name. Do we need both? Do they serve the same purpose? Can we acheive a more natural phrasing with one or the other? These are the kinds of questions you can start to ask yourself once your program is farther along, and you are more certain that you _really_ understand the problem (and your own solution to it).
+
+In this case, `gameIsValid` is a boolean variable that we set up way back in Step 2, because, while we were writing our blueprint, we wanted a way to tell whether the main game loop should continue looping or exit. It has served us well up until now, but now that our program has taken shape, we'd really prefer to hold onto more information than `bool gameIsValid` is capable of. We can also see that, if we used `gameStatus`, we could simulate `gameIsValid` by simply checking whether `gameStatus == IN_PROGRESS`). That's starting to feel a bit more natural. Let's eliminate `gameIsValid`, then, and replace it with our new-and-improved `gameStatus` variable:
+
+{% highlight c++ %}
+// Variable to hold the current status of the game. See the 
+// enum declaration at the top of this file for the possible
+// values of status.
+int gameStatus = IN_PROGRESS;
+{% endhighlight %}
+
+We've set it's default value to `IN_PROGRESS` since that's the way the game begins. Now, we also need to update the condition on our main loop:
+
+{% highlight c++ %}
+...
+// 2. Enter the main game "loop"
+while (gameStatus == IN_PROGRESS) {
+  // a. draw the board
+  drawBoard(board);
+  ...
+{% endhighlight %}
+
+Now our main game loop will continue to execute as long as the game's status is still `IN_PROGRESS` after each turn. This feels right. We just need to make sure we're updating `gameStatus` somewhere in the loop. Let's change (c.) to the following:
+
+{% highlight c++ %}
+...
+// c. Check the current status of the game to determine
+//    if the game can continue...
+gameStatus = isGameOver(board);
+...
+{% endhighlight %}
+
+Why does this work? Well, we know `isGameOver` will return either `IN_PROGRESS`, `USER_WON`, `COMPUTER_WON`, or `DRAW`, and we know our loop is set to continue looping as long as the return value is `IN_PROGRESS`.  Our awkward quote from above has turned into the much more readable:
+
+> If the game status is not "in progress", stop executing the game loop
+
+OK. Better and better.
+
+The only thing left to do from our original blueprint is "(3.): display a specific message depending on how the game ended." That's simple enough now that we have our `gameStatus` variable, and we can either do it in our `main` loop, or in a function, if we felt like. Here's one example of how it might look, implemented in the `main` loop, and using our last blueprint entry as the guide for where the code should go:
+
+{% highlight c++ %}
+// 3. print final game result message
+cout << "Game over! Here's what the final board looked like:" << endl << endl;
+drawBoard(board);
+cout << endl;
+switch (gameStatus) {
+  case USER_WON:     cout << "^.^ Congratulations! ^.^ You win! ^.^ "       << endl; break;
+  case COMPUTER_WON: cout << "~.~ Sorry! ~.~ You lose! ~.~ "                << endl; break;
+  case DRAW:         cout << "O.o Whoa, that was close! O.o You tied! O.o " << endl; break;
+  default: cout << "Hmm... something really went wrong here. Please let my programmer know. " << endl;
+}
+cout << endl;
+{% endhighlight %}
+
+I've chosen to use a switch statement because I realized that I wanted to always choose _one_ out of a set of possible options. Remember that an `enum` just provides _aliases_ for integers, so it's perfectly legal (and a common practice) to use `enum` values to represent the cases in a `switch` statement. It makes the code a lot more readable than, say `case 1:`, `case 2:`, etc.
+
+Well now - we have a nice looking `main` function which is readable, easy to understand, and clearly implements the main idea of the game. Read through it once, and see if you find it easy to follow what's going on:
+
+{% highlight c++ %}
+int main (int argc, char* argv[])
+{
+  // State variables
+  //
+  // Board:
+  //     0   1   2
+  //   +---+---+---+
+  // 0 |   |   | x | x = board[0][2]
+  //   +---+---+---+
+  // 1 |   |   |   |
+  //   +---+---+---+
+  // 2 |   |   |   |
+  //   +---+---+---+
+  //
+  // Each board square will be in one of three possible
+  // states:  0=empty, 1=owned by 'x', 2=owned by 'o'.
+  int board[3][3] = {};
+
+  // Variable to hold the current status of the game. See the 
+  // enum declaration at the top of this file for the possible
+  // values of status.
+  int gameStatus = IN_PROGRESS;
+
+  // Flag to determine whose turn it is
+  // false: it is the computer's turn to make a move
+  // true:  it is the player's turn to make a move
+  bool playerTurn = true;
+
+
+  /* Game Flow */
+  
+  // 1. determine who goes first
+  playerTurn = rand() % 2; // coin flip
+
+  // 2. Enter the main game "loop"
+  while (gameStatus == IN_PROGRESS) {
+    // a. draw the board
+    drawBoard(board);
+    
+    // b. current player makes a move
+    //    the logic here depends on whether or not the
+    //    computer or the player is the current player
+    if (playerTurn) {
+      // Some function for asking the user what the next move should be...
+      nextPlayerMove(board);
+
+    } else {
+      // Some function for determining what the next move should be...
+      nextComputerMove(board);
+    }
+    
+    // c. Check the current status of the game to determine
+    //    if the game can continue...
+    gameStatus = isGameOver(board);
+    
+    // d. swap current player
+    playerTurn = (playerTurn) ? false : true;
+  }
+
+  // 3. print final game result message
+  cout << "Game over! Here's what the final board looked like:" << endl;
+  cout << endl;
+  drawBoard(board);
+  cout << endl;
+  switch (gameStatus) {
+    case USER_WON:     cout << "^.^ Congratulations! ^.^ You win! ^.^ "       << endl; break;
+    case COMPUTER_WON: cout << "~.~ Sorry! ~.~ You lose! ~.~ "                << endl; break;
+    case DRAW:         cout << "O.o Whoa, that was close! O.o You tied! O.o " << endl; break;
+    default: cout << "Hmm... something really went wrong here. Please let my programmer know. " << endl;
+  }
+  cout << endl;
+}
+{% endhighlight %}
+
+Notice how the comments help? Think of food. Flavor isn't required for nutrition, but food is much more enjoyable to eat when it has been well seasoned. Comments are like seasoning. They are not required for the code to function, but the code is much easier to read when it has been well commented.
+
+
+Click to [download the program in its current state](#).
+(Solutions will be made available after 11/21)
+
 
 Step 8: Getting Strategic
 =========================
