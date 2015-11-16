@@ -5,6 +5,9 @@ date:   2015-11-15 17:38:12
 categories: cs002 tutorial
 ---
 
+Overview (Step 0)
+=================
+
 One of the most challenging aspects of learning to program is not the strange and unfamiliar syntax of the language, but 
 rather the strange and unfamiliar way of thinking about problems. We take so much for granted when we communicate
 with one another, because we know the person we're communicating with will be able to fill in the gaps. A computer, however,
@@ -19,8 +22,9 @@ and identifying the sub-problems contained within it. Practice solving those sub
 gives you. Get comfortable with how they work, and what their limitations are. More than anything else, you will find that 
 practice helps you refine your technique. If you practice regularly, your programs will improve.
 
-I've designed this tutorial as a way to share with you the process that I use to implement ideas in code. In this case, we'll be 
-dealing with a relatively simple idea (on the surface): creating an interactive game of Tic-Tac-Toe in which the user and
+Planning is Key
+---------------
+I've designed this tutorial as a way to share with you the process that I use to implement ideas in code. In this case, we'll be dealing with a relatively simple idea (on the surface): creating an interactive game of Tic-Tac-Toe in which the user and
 the computer compete with one another to win the game. Like most problems, this problem has many sub-problems hiding inside of it.
 Before reading on, can you think of any? What functionality would we need? What are the rules of the game? What information 
 would we be required to keep track of? How will we know when the game is over? How will we know who has won? Whose turn it is?
@@ -31,6 +35,9 @@ Am I assuming that the size of the board is always 3x3? You are _certainly_ maki
 the assumptions they make. Examine those assumptions: they often tell you about things you'll need to consider when implementing
 your solution in code.
 
+Describe the Problem
+--------------------
+
 So, how does Tic-tac-toe work?
 
 It's a game, played on a 3x3 grid, where two players take turns claiming cells on the grid using their symbol (traditionally using 
@@ -38,7 +45,6 @@ an 'x' for one player and an 'o' for the other) in an attempt to be the first pl
 all in the same row, all in the same column, or along either of the two principal diagonals of the grid. The game ends when 
 the first player successfully marks three adjacent cells (in which case that player is the winner), or when all cells have been
 claimed and no valid moves remain (in which case the game results in a tie, or draw). 
-
 
 Once you feel you understand the problem, you should take a moment to think about what might be the simplest thing you could 
 build that might help you get further along. This is where you begin to break the problem of "implementing Tic-tac-toe in c++"
@@ -51,10 +57,12 @@ So now you have a list of sub-problems you feel are important pieces of the bigg
 sub-problems themselves need to be broken down into sub-problems, but for now, let's see if we can focus on arranging what we
 have into a scaffold, or blue-print of our final solution. 
 
+Converting to Code
+------------------
 All of this work, so far, and we haven't written 1 line of c++. A better way of looking at it is: we haven't wasted 1 second
-writing code we might possibly never use, or want. Let's do something that will clearly be useful, at this point, since we 
-know we're going to be needing it for just about everything else down the line: let's figure out the minimal amount of 
-code we'd need to just draw a tic-tac-toe board.
+writing code we might possibly never use, or want. But eventually, we need to write code. Let's do something now that will clearly be useful at this point, since we 
+know we're going to need it for everything else down the line: let's figure out the minimal amount of 
+code we'll need to just draw a tic-tac-toe board.
 
 We don't need to make it perfect. In fact, since we don't have the rest of the functionality in place yet to play the game, we 
 probably can't make it perfect, since so many important decisions have yet to be made. All it has to do at this point
@@ -63,7 +71,7 @@ is look roughly like a tic-tac-toe board and we'll be happy. This is a sketch. W
 Since drawing the board is a nice, self-contained piece of functionality, it makes sense to implement it as a function. Before
 we make the function, let's spend a few moments thinking about the main part of the program:
 
-{% highlight c++ linenos %}
+{% highlight c++ %}
 #include <iostream>
 using namespace std;
 
@@ -90,16 +98,20 @@ int main (int argc, char* argv[])
 OK - We've defined a really simple program that does just two things: (1) it declares a 2-dimensional array (3x3) of integers
 which we'll use to represent the current "state" of each of the cells on our board. Hopefully you've thought a bit about the 
 cells in the planning phase above. They can be in one of three states: "empty", "owned by the player", "owned by the computer".
-When it comes to drawing the board, we'll represent those three states with either an empty space, an 'x', or an 'o'.
+When it comes to drawing the board, we'll represent those three states with either an empty space ` `, an `x`, or an `o`.
 The second thing this program does is call a (currently non-existant) function `drawBoard(board)`, passing to it as a parameter 
 the 2D array of integers we just defined. This seems reasonable: in order to properly draw the board, we're going to need to
 know the current state of each of the cells in the board -- and this is what our `board` variable holds.
+
+Notice that I've described things using comments. Just seeing `int board[3][3];` might not tell you much in a few months.
+Having those comments to remind you of the assumptions you made when setting up the board will be a big help down the
+road.
 
 Let's take a crack at implementing the `drawBoard` function now. To start with, we'll entirely ignore the `board` parameter -- we
 haven't initialized it to anything, and have not spent any time thinking about exactly how we'll represent everything. For right
 now we just want to get a 3x3 grid up on the screen. Here it is:
 
-{% highlight c++ linenos %}
+{% highlight c++ %}
 void drawBoard(int board[][3]) {
   cout << "  " << "  A   B   C  " << endl;
   cout << "  " << "+---+---+---+" << endl;
@@ -123,6 +135,56 @@ user is likely to already be familiar with is always a good idea: it cuts down o
 to do in order to use your program.
 
 Click to [download the program in its current state](https://gist.github.com/andrewfhart/926a5d85e303f9b2c610).
+
+Step 1: Making the board work
+=============================
+
+Alright, so we've got a board displaying now, and it looks good: except all the cells are empty. If we agree that cells can be in one of three positions, we could use an integer to define it. Perhaps `0` means "empty", `1` means "owned by the user", and `2` means "owned by the computer." In that case we could improve our `drawBoard` function to better reflect the current state 
+of the board (as represented by the `board` parameter). How would you do it? Think about it before you read on.
+
+{% highlight c++ %}
+void drawBoard(int board[][3]) {
+  cout << "  " << "  A   B   C  " << endl;
+  cout << "  " << "+---+---+---+" << endl;
+  for (int row = 0; row < 3; row++) {
+    cout << row << " ";
+    for (int col = 0; col < 3; col++) {
+      switch (board[row][col]) {
+        case 1: cout << "| " << "x" << " "; break;
+        case 2: cout << "| " << "o" << " "; break;
+        default:cout << "| " << " " << " "; break;
+      }
+    }
+    cout << "|" << endl;
+    cout << " " << " " << "+---+---+---+" << endl;
+  }
+}
+{% endhighlight %}
+
+We've made an assumption here that `x` is always going to be the character used to represent the user, and `o` will represent moves made by the computer. That's fine, of course, but it's an example of some of the things we should be thinking about in
+the planning phase. We're also using raw numbers (e.g.: `1` and `2`) to represent states. We could (and probably should!) use
+an `enum` for this instead, but we can get to that later. We're sketching. 
+
+Let's write a few tests to check how our board performs under different scenarios. In our `main` function, we'll first _initialize_ the board to all zeros (empty), and then fill in a few cells with arbitrary values: 
+
+{% highlight c++ %}
+...
+// Each board square will be in one of three possible
+// states:  0=empty, 1=owned by 'x' (user), 2=owned by 'o' (computer).
+int board[3][3] = {};
+
+// Let's test our board by filling in a few cells randomly
+board[0][0] = 1;
+board[1][1] = 1;
+board[2][2] = 1;
+board[0][2] = 2;
+board[2][0] = 2;
+
+drawBoard(board);
+...
+{% endhighlight %}
+
+Click to [download the program in its current state](https://gist.github.com/andrewfhart/d2210f0b60cb3f344807).
 
 
 
