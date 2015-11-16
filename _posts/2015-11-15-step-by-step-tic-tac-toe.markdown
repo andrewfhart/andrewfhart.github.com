@@ -68,8 +68,9 @@ We don't need to make it perfect. In fact, since we don't have the rest of the f
 probably can't make it perfect, since so many important decisions have yet to be made. All it has to do at this point
 is look roughly like a tic-tac-toe board and we'll be happy. This is a sketch. We'll put in the details as we go along. 
 
-Since drawing the board is a nice, self-contained piece of functionality, it makes sense to implement it as a function. Before
-we make the function, let's spend a few moments thinking about the main part of the program:
+Since drawing the board is a nice, self-contained piece of functionality, it makes sense to implement it as a function, which is what we'll do. 
+
+Before that, however, let's spend a few moments thinking about the `main` part of the program that will call the function:
 
 {% highlight c++ %}
 #include <iostream>
@@ -99,9 +100,9 @@ OK - We've defined a really simple program that does just two things: (1) it dec
 which we'll use to represent the current "state" of each of the cells on our board. Hopefully you've thought a bit about the 
 cells in the planning phase above. They can be in one of three states: "empty", "owned by the player", "owned by the computer".
 When it comes to drawing the board, we'll represent those three states with either an empty space, an `x`, or an `o`.
-The second thing this program does is call a (currently non-existant) function `drawBoard(board)`, passing to it as a parameter 
+The second thing this program does is call a (currently non-existant) function `drawBoard(board)`, passing it 
 the 2D array of integers we just defined. This seems reasonable: in order to properly draw the board, we're going to need to
-know the current state of each of the cells in the board -- and this is what our `board` variable holds.
+know the current state of each of the cells in the board -- and that is what our `board` variable holds.
 
 Notice that I've described things using comments. Just seeing `int board[3][3];` might not tell you much in a few months.
 Having those comments to remind you of the assumptions you made when setting up the board will be a big help down the
@@ -465,6 +466,82 @@ void nextPlayerMove(int board[][3]) {
 
 Click to [download the program in its current state](https://gist.github.com/andrewfhart/f7c54954b0d1f84b663a).
 
+
+Step 5: Adding Intelligence
+===========================
+
+At some point, the computer is going to have to make a move. We've just finished the part of the program that allows us to get information from the user, via `cin`, and to validate that information. Clearly, we can't take the same approach when it's the computer's turn. It's up to _us_, the developers, to write the logic the computer will use to make its move.
+
+Before we get too wrapped up in how difficult that sounds, let's follow the principles that have successfully gotten us this far: do the minimum amount of work to be able to test and move on. We can _always_ make the program smarter, or more efficient, later. For now, let's do the minimum: have the computer choose a random empty cell every time it's its turn.
+
+THAT's a problem we can solve. In fact, why don't you do it now. Here's a scaffold for you:
+
+{% highlight c++ %}
+/**
+ * Determine the next move the computer should make. For now
+ * the strategy will be simple: randomly pick an available 
+ * cell.
+ * Once a cell has been picked, update the board
+ * 
+ * @param  int[3][3] board   The current state of the board
+ * @return void
+ */
+void nextComputerMove(int board[][3]) {
+  int row, col;
+
+  // Choose an *available* cell at random from the board
+
+  // Update the board state
+  board[row][col] = 2; //  computer is always 'o'. Ugh, again with the magic numbers.
+                       //  We'll definitely have to fix this in a future step.
+}
+{% endhighlight %}
+
+When you're done, compare your solution to this working example (If you cheat, it's not hurting me, just you...)
+
+{% highlight c++ %}
+/**
+ * Determine the next move the computer should make. For now
+ * the strategy will be simple: randomly pick an available 
+ * cell.
+ * Once a cell has been picked, update the board
+ * 
+ * @param  int[3][3] board   The current state of the board
+ * @return void
+ */
+void nextComputerMove(int board[][3]) {
+  int row, col;
+
+  do {
+    row = rand() % 3;  // Choose a random row
+    col = rand() % 3;  // Choose a random column
+  } while (board[row][col] != 0); // If taken, try again
+
+  // Update the board state
+  board[row][col] = 2; //  computer is always 'o'
+}
+{% endhighlight %}
+
+Great. We've just programmed some "artificial intelligence" into our game. It now makes a move all by itself! It's not very "smart," but we'll get there.
+
+Notice how all of the functions I've written have *lots* of comments? Each one has a little block comment on top that describes what it does, and most of them have inline comments to clarify the intention of individual lines. I bet it made it easier for you to follow. You should program this way too. Make things easier on yourself and others. 
+
+Let's make sure we can call this function from our `main` function:
+
+{% highlight c++ %}
+...
+if (playerTurn) {
+  // Some function for asking the user what the next move should be...
+  nextPlayerMove(board);
+
+} else {
+  // Some function for determining what the next move should be...
+  nextComputerMove(board);
+}
+...
+{% endhighlight %}
+
+Click to [download the program in its current state](https://gist.github.com/andrewfhart/e79eb09682313c0cf94c).
 
 
 
