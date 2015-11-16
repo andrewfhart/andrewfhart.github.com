@@ -323,3 +323,153 @@ while (gameIsValid) {
 {% endhighlight %}
 
 Click to [download the program in its current state](https://gist.github.com/andrewfhart/cb3ce23ed91897f50e37).
+
+Step 4: Getting Input from the User
+===================================
+
+According to our blueprint, the next unfinished task is the task of the "current player makes a move." As you think about this, you should realize that this step actually has to have two different implementations: the current player might be the user on one turn, and the computer on the next. Making a move has very different implementations depending on who our current player is. How could we structure this portion of our program to account for this? One way would be to just write everything we need for both implementations right there, in the main loop. 
+
+That would not be very clean, though, and it would make our main loop harder to understand. It would be much nicer if we could find a way to structure things so that "getting the next move" was a function. More specifically, since we want our functions to have good design, and that means making sure they do one thing, and only one thing, we probably want to have _two_ functions: one to ask for the next move from the user when it's the user's turn, and one to calculate the next move the computer should make when it's the computer's turn.
+
+Since we already have `playerTurn` to tell us whose turn it is, something like this would be really nice:
+
+{% highlight c++ %}
+if (playerTurn) {
+  // Some function for asking the user what the next move should be...
+  nextPlayerMove(board);
+
+} else {
+  // Some function for determining what the next move should be...
+  nextComputerMove(board);
+}
+{% endhighlight %}
+
+That's the wonderful thing about breaking problems down into sub-problems. We can sit here and think specifically about individual things like "how would i _like_ this to work?" without worrying too much about all of the other parts of the problem.  
+
+In this case, we can calculate the player's next move by calling a function we'll write (`playerNextMove`) and the computer's next move by calling a different function we'll write (`computerNextMove`). You may notice I've included the `board` as a parameter to each function. Why? Well - because it seemed useful to me, based on how I'm thinking about _what it means_ to choose a valid move. The keyword is valid: the user is not free to choose any cell on the board! The user may only choose spaces that have not previously been chosen. In other words: we need to know which cells are empty in order to be able to know that the user has given us a good input. Since `board` is our container for information about the current state of every cell, it makes sense that we provide it to the function. 
+
+Another thing to note about the idea of validation. Validating user input, in this case, is entirely part of "getting the next player move." As such, we should handle validation _inside_ the `playerNextMove()` function, and not pollute the outside world with the concern of validating the result. In other words, the rest of the program should be able to confidently assume that the result of calling `playerNextMove()` leaves the board in a valid state.
+
+There's some nice symmetry to our implementation now. Looking at the code, it reads (almost) like English: 
+> If it is now the player's turn, get the player's next move using the current state of the board. Otherwise (else), it must be the computer's turn, so get the computer's next move using the current state of the board.
+
+Let's turn now to the `nextPlayerMove()` function. Since we're passing the current state of the board via `board`, and since `board` is an array, we can manipulate the variable directly to update the state, once we've validated the user input. So, in other words, `nextPlayerMove()` can be a `void` function since we'll directly update `board`:
+
+{% highlight c++ %}
+void nextPlayerMove(int board[][3]) {
+  int row, col;        // containers to hold input from the user
+  // our implementation here
+  //...
+  // at the end, we'll want to directly update board with the validated
+  // move so that it gets recorded as the new current state of the board:
+  board[row][col] = 1; // 1 means our user, 'x' when we draw the board. Really wish we'd used
+                       // an enum here instead of these magic numbers! We'll have to fix this
+}
+{% endhighlight %}
+
+OK, again, we've created a scaffold or blueprint of what we want to have happen in this function. It allows us to now focus on the main implementation. We could simply `cin` the values for starters, but wait - have we thought about how we want the user to give us input? The board we drew uses letters for columns and rows for numbers, like Excel. We'd better use the same assumptions here when we're asking the user to enter input. Hm.. it's easier for _us_ if everything were numbers (since those can be used as direct array indices), but it's easier for our user if we use one letter and one number. Well, we know there's a very limited number of "correct" values, so we could simply translate for the user:
+
+{% highlight c++ %}
+void nextPlayerMove(int board[][3]) {
+  int  row, col;       // containers to hold input from the user
+  char col_c;          // container to hold the character input from the user
+  
+  cin >> col_c >> row; // obtain input from user (e.g.: A 1)
+  // Translate character input for column into numeric equivalent
+  if      (col_c == 'a' || col_c == 'A') { col = 0; }
+  else if (col_c == 'b' || col_c == 'B') { col = 1; }
+  else if (col_c == 'c' || col_c == 'C') { col = 2; }
+  else {
+    cout << "! Invalid column value entered. Your choices are: [A, B, C] " << endl;
+  }
+  // the rest of our implementation
+  // ...
+  // at the end, we'll want to directly update board with the validated
+  // move so that it gets recorded as the new current state of the board:
+  board[row][col] = 1; // 1 means our user, 'x' when we draw the board. Really wish we'd used
+                       // an enum here instead of these magic numbers! We'll have to fix this
+}
+{% endhighlight %}
+
+Validating the row input should be much easier, since it was given to us directly as an integer:
+
+{% highlight c++ %}
+// Validate the provided row value
+if (row < 0 || row > 2) {
+  cout << "! Invalid row value entered. Your choices are: [0, 1, 2] " << endl;
+}
+{% endhighlight %}
+
+Now, we said earlier that we want the _result_ of calling `nextPlayerMove` to be a valid update to the current state of the board. In other words, we need to handle all validation _inside_ this function. What should we do, then, when the user gives us bad input? Well, one solution would be to implement a loop, and continue to ask the user for input until the user finally gives us something that validates. That would be a _good_ solution, in this case, because all of the logic for handling user input and validation of that input is neatly wrapped up in one function. The rest of the program can call this function and be confident we'll leave the board in a good (valid) state. See if you can figure out how to implement the loop necessary to ensure that all of the input is properly valid. Keep in mind the three criteria:
+1. The coordinate of the row must be between 0 and 2
+2. The coordinate of the column must be between 0 and 2 (but given as A, B, or C)
+3. The value of the corresponding location in `board` must be empty (`0`)
+
+When you've worked on it a bit, compare what you have to this complete example:
+
+{% highlight c++ %}
+/** 
+ * Get the next move from the player, and make sure that the
+ * desired move is valid. Validity means:
+ *   - column value is within bounds [A, B, C]
+ *   - row value is within bounds    [0, 1, 2]
+ *   - the selected cell is empty    board[row][col] == 0
+ * Once input has been validated, update the board.
+ *
+ * @param  int[3][3] board  The current state of the board
+ * @return void
+ */
+void nextPlayerMove(int board[][3]) {
+  bool col_valid;         // Flag for column validity
+  bool row_valid;         // Flag for row validity
+  char col_c;             // container for the character value of the column
+  int  col;               // container for the integer value of the column
+  int  row;               // container for the integer value of the row
+
+  cout << "Your turn. Where would you like to move next?" << endl;
+  cout << "Type your move as two characters separated by a space (ex: A 1)" << endl;
+  
+  do {
+    col_valid;         // assume correct input until proven wrong via tests later
+    row_valid;         // ...
+    // Obtain input from the user (one character for column, one int for row)
+    cin >> col_c >> row;
+    
+    // Validate the provided column value
+    if      (col_c == 'a' || col_c == 'A') { col = 0; }
+    else if (col_c == 'b' || col_c == 'B') { col = 1; }
+    else if (col_c == 'c' || col_c == 'C') { col = 2; }
+    else {
+      cout << "! Invalid column value entered. Your choices are: [A, B, C] " << endl;
+      col_valid = false;
+    }
+    
+    // Validate the provided row value
+    if (row < 0 || row > 2) {
+      cout << "! Invalid row value entered. Your choices are: [0, 1, 2] " << endl;
+      row_valid = false;
+    }
+    
+    // Ensure that the choice corresponds to an empty cell
+    if (row_valid && col_valid && board[row][col] != 0) {
+      cout << "! That cell is not empty. Please try a different cell " << endl;
+      col_valid = false;
+      row_valid = false;
+    }
+  } while (!col_valid || !row_valid);
+
+  // Update the board with the user's latest choice
+  board[row][col] = 1;  // user is always 'x'
+}
+{% endhighlight %}
+
+Click to [download the program in its current state](https://gist.github.com/andrewfhart/f7c54954b0d1f84b663a).
+
+
+
+
+
+
+
+
+
