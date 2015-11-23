@@ -832,7 +832,13 @@ Click to [download the program in its current state](#).
 Step 8: Getting Strategic
 =========================
 
-In which we implement some better algorithms for choosing the next cell... more coming soon
+Alright, so we've got a game, and it plays the user... randomly. Let's see if we can do better. As with everything else we've done so far, don't get hung up on the idea that it has to play perfectly - let's get there in steps. The first thing to do might be to examine the moves YOU make when you play. How do YOU try to win? Are there any obvious things you do or don't do? Are all squares equivalent? 
+
+Recall what you implemented earlier to determine whether or not the game was over. Since you now know are only a limited number of ways to win the game, how can you use that information to help your program make "smarter" choices about what its next move should be?
+
+If your answer to the question "are all squares equivalent" was: 'no', then one way to play "better than random" would be to make your program choose those squares, if they are available. If they are not available, then your program could default to playing randomly.
+
+At a minimum you should implement this.
 
 Step 9: Wrapping up
 =========================
