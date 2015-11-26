@@ -840,6 +840,66 @@ At a minimum you should implement this.
 
 Beyond this, you may consider how you actually play the game against a human opponent: most likely you primarily engage in two activities: offense and defense. That is, at every turn, you check to see if you can make a move that will allow you to win (offense), and, if no such move exists, you then check to see if you can make a move that will _prevent_ the opponent from winning (defense). If such a move exists, you take it, blocking your opponent. How could you implement a function to handle this? In other words, how would you write a function to determine if, given the current state of the board, there is a move you could make that would allow you to win? Could you write the function in such a way that you could _reuse_ the same logic for determining if the opponent can win? Since the rules for "can win" are the same for each player, it seems like this should be possible.
 
+What would such a function return? It makes sense that it should "suggest" the next move to make. That is, it should return the cell that the player should claim in order to either win, or prevent the opponent from winning (depending on who we're calculating for). Since we've used a 2-dimensional array, the unique location of the cell to claim involves 2 pieces of information: the row, and the column. We can't return two integers from a function, so we'll need to define some structure to hold this combined information. This is a perfect use-case for a _struct_. Here's an example that might do the job for us:
+
+{% highlight c++ %}
+
+/**
+ * Container to represent a single cell on the board. This makes
+ * it possible to use a board location as the return value of a
+ * function ex: `playerCanWin`.
+ */
+struct Cell {
+  Cell(int r, int c): row(r), col(c) {};
+  int row;
+  int col;
+};
+
+{% endhighlight %}
+
+With this in hand, we could write a function that returns a "Cell" object, which we could then inspect using the dot (.) operator to find the row and column values of the cell. Now we just need to implement the function for whether or not a given player can win. There are many ways to do this, so I'll give you the structure, and let you fill in the details:
+
+{% highlight c++ %}
+
+/**
+ * Determine whether a user could win by claiming 
+ * one more cell along any of the possible winning
+ * axes.
+ * There are 8 possible winning axes. The user can
+ * win if the sum of the cells on that axis is currently 
+ * 2 and if one of the cells is empty (=0).
+ * 
+ * @param  int[3][3] board  The current state of the board
+ * @param  int       which  Which player (USER or COMPUTER)
+ * @return cell  The location of the cell the user could win with
+ */
+Cell playerCanWin(int board[][3], int whichPlayer) {
+  
+  // Iterate through the 8 possible winning axes
+  // Rows,
+  // Columns,
+  // and Diagonals
+  // if a winning move is possible for the current player, return the index of the cell:
+  // return Cell(<somerow>,<somecol>);
+  
+  // No possible winning move for this player on this turn
+  return Cell(-1,-1);
+}
+
+{% endhighlight %}
+
+The code that calls this function could then check the return value, and if the row & column were >= 0, know that a winning move is possible and take the appropriate action:
+
+{% highlight c++ %}
+  ...
+  Cell c = playerCanWin(board, COMPUTER);
+  // If the computer can win, then make it happen:
+  if (c.row >= 0 && c.col >= 0) {
+    board[c.row][c.col] = COMPUTER; // claim the square for the computer
+  }
+  ...
+{% endhighlight %}
+
 Finally, what happens if there are no opportunities for either offense or defense? That is, what if there is no move that you can make that will win the game for you, and there is no move your opponent could make that would win the game for them? Well, in this case, you should "fall back" to playing strategically -- picking squares that will best set you up for a winning move on a later turn. We've already covered this in the beginning of this section. The ideal solution would be to find a way to encapsulate your three strategies: random, strategic (smart), and offense+defense (let's call it "genious") so that they can be chained together to form a working strategy for all situations. 
 
 The flow for choosing how to play a square might be: First play offense + defense, then if that doesn't work, pick a strategic square, then, if all the strategic squares are taken, pick a random square. It would be very hard to beat an opponent who uses this strategy.
