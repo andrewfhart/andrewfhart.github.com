@@ -659,8 +659,7 @@ int isGameOver (int board[][3]) {
 }
 {% endhighlight %}
 
-Click to [download the program in its current state](#).
-(Solutions will be made available after 11/21)
+Click to [download the program in its current state](https://gist.github.com/andrewfhart/95ed0b5a99b7505b8c65).
 
 Step 7: Printing the final message
 ===================================
@@ -825,8 +824,7 @@ int main (int argc, char* argv[])
 Notice how the comments help? Think of food. Flavor isn't required for nutrition, but food is much more enjoyable to eat when it has been well seasoned. Comments are like seasoning. They are not required for the code to function, but the code is much easier to read when it has been well commented.
 
 
-Click to [download the program in its current state](#).
-(Solutions will be made available after 11/21)
+Click to [download the program in its current state](https://gist.github.com/andrewfhart/93cd5171cc0e252712bf).
 
 
 Step 8: Getting Strategic
@@ -840,11 +838,13 @@ If your answer to the question "are all squares equivalent" was: 'no', then one 
 
 At a minimum you should implement this.
 
-Step 9: Wrapping up
-=========================
+Beyond this, you may consider how you actually play the game against a human opponent: most likely you primarily engage in two activities: offense and defense. That is, at every turn, you check to see if you can make a move that will allow you to win (offense), and, if no such move exists, you then check to see if you can make a move that will _prevent_ the opponent from winning (defense). If such a move exists, you take it, blocking your opponent. How could you implement a function to handle this? In other words, how would you write a function to determine if, given the current state of the board, there is a move you could make that would allow you to win? Could you write the function in such a way that you could _reuse_ the same logic for determining if the opponent can win? Since the rules for "can win" are the same for each player, it seems like this should be possible.
 
-In which we put the final touches, and talk about testing... more coming soon
+Finally, what happens if there are no opportunities for either offense or defense? That is, what if there is no move that you can make that will win the game for you, and there is no move your opponent could make that would win the game for them? Well, in this case, you should "fall back" to playing strategically -- picking squares that will best set you up for a winning move on a later turn. We've already covered this in the beginning of this section. The ideal solution would be to find a way to encapsulate your three strategies: random, strategic (smart), and offense+defense (let's call it "genious") so that they can be chained together to form a working strategy for all situations. 
 
+The flow for choosing how to play a square might be: First play offense + defense, then if that doesn't work, pick a strategic square, then, if all the strategic squares are taken, pick a random square. It would be very hard to beat an opponent who uses this strategy.
+
+Click to [download the program in its current state](https://gist.github.com/andrewfhart/5cc371195436538f884a).
 
 
 
