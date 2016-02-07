@@ -25,12 +25,14 @@ $(document).ready(function () {
 
   var imageBoxes = [];
 
-  $('#photos').masonry({
-    columnWidth: function( containerWidth ) {
-      return containerWidth / 3;
-    },
-    itemSelector: '.photo',
-    gutter:20
+  $('#photos').imagesLoaded( function() {
+    $('#photos').masonry({
+      columnWidth: function( containerWidth ) {
+        return containerWidth / 3;
+      },
+      itemSelector: '.photo',
+      gutter:20
+    });
   });
 
   // Process the latest photos obtained from the Flickr API
