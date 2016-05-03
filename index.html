@@ -1,89 +1,70 @@
 ---
-layout: default
-title: Home
-flickr: true
+layout: homepage
+title: Andrew F. Hart - Home
+flickr: false
 ---
 
-<div class="row">
 
-  <div class="col-xs-12 col-md-4">
+<div class="panel  mdl-shadow--2dp mdl-cell--hide-phone">
+  <h3 style="color:#00B0FF;margin:12px 0px 24px 0px;">Hello, I’m Andrew. </h3>
+  <h4>I like to build things using software.</h4>
+  <p>I draw on my experience working in a wide variety of environments, from university research lab, to early start-up, to national space agency. Each has provided me a unique perspective on the art and science of software development.</p>
 
-    <img src="images/profile-512.jpg" class="img-responsive" id="coverpic" />
+  <p>At the moment, I'm the CTO of <a href="https://pogoseat.com/" target="_new">Pogoseat, Inc.</a>, where we're developing tools to help fans get the best possible experience at live events. On any given day I might be managing our engineering team, digging through data to find ways to optimize the performance of our mobile app and REST APIs, or working to refine the product roadmap to make sure we can continue to scale.</p>
 
-    <p><span class="serify bigger">Welcome </span> — and thanks for stopping by! You've found the personal home page of Andrew F. Hart, an entrepreneur, software engineer, photographer and travel enthusiast living and working in Los Angeles, California.</p>
+  <p>When I’m not in front of a keyboard, I’m usually out taking photographs. Travel and photography are two longstanding passions of mine that go well together, and I’ve taken every opportunity to get out and see the world, always with my camera, of course.</p>
+</div>
 
-    <p>I've put this website together to help you get to know me a bit better. If you'd like to learn more, please get in touch! </p>
-
-    <div class="social-links">
-      <a href="http://twitter.com/andrewfhart" target="_new"> <img src="images/icons/twitter-32.png"/></a>
-      <a href="http://facebook.com/andrewfhart" target="_new"> <img src="images/icons/facebook-32.png"/></a>
-      <a href="http://flickr.com/photos/andrew" target="_new"> <img src="images/icons/flickr-32.png"/></a>
-      <a href="http://www.linkedin.com/pub/andrew-hart/3/b98/594" target="_new"><img src="images/icons/linkedin-32.png"/></a>
-      <a href="http://andrewfhart.tumblr.com/" target="_new"> <img src="images/icons/tumbler-32.png"/></a>
-      <a href="http://youtube.com/andrewfhart" target="_new"> <img src="images/icons/youtube-32.png"/></a>
-    </div>
-
-  </div>
-
-  <div class="col-xs-12 col-md-4 col-lg-4 section-teasers">
-    <div class="section-teaser about">
-      <div class="media">
-      <!--
-        <div class="media-left media-middle">
-          <a href="/about/">
-            <img class="media-object" src="images/me-110.jpg" alt="andrew hart">
-          </a>
-        </div>
-      -->
-        <div class="media-body">
-          <h3 class="media-heading"><a href="/about/">About Me</a></h3>
-           A quick overview of my background, skills, interests, and what I'm doing now. <a href="/about/">
-           <br/>&rarr; Learn More</a>
-        </div>
+<!-- Teaser Cards -->
+<div class="mdl-grid mdl-grid--no-spacing">
+  <div class="mdl-cell mdl-cell--4-col mdl-cell">
+    <div class="teaser teaser-home-about mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title mdl-card--expand">
+        <h2 class="mdl-card__title-text">About</h2>
       </div>
-    </div>
-
-    <div class="section-teaser projects">
-      <div class="media">
-      <!--
-        <div class="media-left media-middle">
-          <a href="/projects/">
-            <img class="media-object" src="images/projects/thumbnails/sclive.png" alt="projects">
-          </a>
-        </div>
-      -->
-        <div class="media-body">
-          <h3 class="media-heading"><a href="/projects">Projects</a></h3>
-          Take a look at a few of the things I've built over the years. <a href="/projects/">
-          <br/>&rarr; Learn More</a>
-        </div>
+      <div class="mdl-card__supporting-text">
+        My background, skills, interests, and what I'm working on now.
       </div>
-    </div>
-
-    <div class="section-teaser publications">
-      <div class="media">
-      <!--
-        <div class="media-left media-middle">
-          <a href="/publications/">
-            <img class="media-object" src="images/publications/covers/ieeeitrcmes.jpg" alt="publications">
-          </a>
-        </div>
-      -->
-        <div class="media-body">
-          <h3 class="media-heading"><a href="/publications">Publications</a></h3>
-          Information and links to published research I've authored or been a part of. <a href="/publications/"><br/>&rarr; Learn More</a>
-        </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/about">
+          Learn More
+        </a>
       </div>
     </div>
   </div>
-
-
-  <div class="col-xs-12 col-md-4 col-lg-4">
-    <h3 class="top">Latest Photographs</h3>
-    <div id="photos"></div>
-
+  <div class="mdl-cell mdl-cell--4-col">
+    <div class="teaser teaser-home-projects mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title mdl-card--expand">
+        <h2 class="mdl-card__title-text">Projects</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        A few of the things I've helped build over the years.
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/projects">
+          View Projects
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--4-col">
+    <div class="teaser teaser-home-publications mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title mdl-card--expand">
+        <h2 class="mdl-card__title-text">Publications</h2>
+      </div>
+      <div class="mdl-card__supporting-text">
+        Research, writing, and presentations that have been published.
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/publications">
+          View Publications
+        </a>
+      </div>
+    </div>
   </div>
 </div>
+
+
 
 <!--
   <h1 class="page-heading">Posts</h1>
@@ -118,6 +99,4 @@ flickr: true
     <br/><br/>
     <hr/>
 -->
-
-</div>
 
