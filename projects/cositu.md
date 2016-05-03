@@ -6,16 +6,16 @@ images: cositu
 ---
 
 
-###Project Overview
+### Project Overview
 
-It was 2008, the social networking craze was in full effect. What _couldn't_ be solved with social networking? Well, we thought we had a good idea, and apparently we did, because
+It was 2008, the social networking craze was in full effect. What _couldn't_ be solved with social networking? Well, my brother and I thought we had a good idea, and apparently we did, because
 [others](http://brixity.com) have been [at it as well](http://www.activebuilding.com/company/).
 Our idea boiled down to the fact that people who live together in the same urban multi-tenant
 residential complex might have enough in common that a social network could help solve
 some common issues like "_where's a good place to eat?_", and "_who wants this gently used
 coffee table?_"
 
-For my brother and I, this was our first semi-serious attempt at creating an online business
+This was our first semi-serious attempt at creating an online business
 from the ground up. Semi-serious only in that neither of us was going to quit our day jobs
 for this. We both definitely believed in the idea though, and really had a great time putting
 it together.

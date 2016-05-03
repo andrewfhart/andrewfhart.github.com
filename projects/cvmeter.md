@@ -5,7 +5,8 @@ permalink: /projects/cvmeter/
 images: cvmeter
 ---
 
-###Project Overview
+### Project Overview
+
 Motivated by desire to better understand how my resume was being consumed by the Internet at large, I designed CVMeter as a service that would provide real-time notification of "hits" on a resume or CV. Essentially analytics for resumes, the basic premise was that knowing in real-time that someone (or some thing) was looking at your resume at that moment was both more exciting and more motivating than the traditional "black hole" approach. Getting alerts periodically serves as an incentive to keep the resume up-to-date, since you're more frequently reminded of the fact that people and bots are actively consuming possibly out-of-date representations of your work. Finally, the associated analytics collected with each hit (date, time, rough geographic location (using the IP address), and referrer information when available) provide valuable context about such things as
 
 * Which search engines are indexing your resume (and how often)

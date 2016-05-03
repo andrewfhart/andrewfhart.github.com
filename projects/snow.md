@@ -6,9 +6,11 @@ images: snow
 ---
 
 ### Project Overview
+
 The Snow Data System is a research effort that provides data management and processing support to ongoing efforts at better quantifying the effect that airborne dust and pollutants are having on the melt rates of the world's major snow packs. Data obtained from remote sensing and in-situ instruments are collected, archived, and processed into products, many near-real-time, which are then used by a broad spectrum of downstream consumers including the U.S. Army, the climate science community, and state and regional water resource planning commissions.
 
 ### How I Contributed
+
 My role on this project was to _develop a data collection framework for obtaining hourly
 measurements from a scattered network of in-situ weather stations_ in remote locations
 in the western Rocky Mountains. COTS software was used for the communication link with

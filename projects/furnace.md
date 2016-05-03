@@ -5,7 +5,8 @@ permalink: /projects/furnace/
 images: furnace
 ---
 
-###Project Overview
+### Project Overview
+
 Furnace began in 2006 out of _a desire to better understand the "magic" going on inside newly popular PHP frameworks like Symfony and CakePHP_. URL Routing, Front Controllers, Object Relational Mapping, all of it was fascinating to me. In the process of developing web applications up to that point I had amassed a small toolkit of useful homegrown scripts for doing common tasks like implementing user authentication, form generation, and so on. These formed the basis for what would eventually become Furnace.
 
 For several years, _Furnace was my playground; my sandbox for exploring PHP and trying out new ideas_ for "making things better". More than once I rebuilt it from the ground up, and _I learned to appreciate the importance of thinking things through architecturally_, of flushing out potentially limiting assumptions before they become hopelessly ingrained in
