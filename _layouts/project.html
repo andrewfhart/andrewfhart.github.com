@@ -1,19 +1,26 @@
 ---
 layout: page
+parent: /projects
 ---
-<div class="row">
-  <div id="project_description" class="col-xs-12 col-md-6 col-lg-6">
-    {{ content }}
-  </div>
-  <div id="project_images" class="col-xs-12 col-md-6 col-lg-6">
 
-    {% capture project %}projects_{{ page.images }}{% endcapture %}
-    <ul class="menu-item publication-list">
-    {% for item in site.data[project] %}<li>
-        <div class="publication">
-            {% if item.image %}<img src="{{ item.image }}" alt="">{% endif %}
+  <div id="project_description">
+    <div class="panel mdl-shadow--2dp">
+      <div class="mdl-grid">
+        <div class="mdl-cell--6-col">
+          {{ content }}
         </div>
-    </li>{% endfor %}
-  </ul>
+        <div id="project_images" class="mdl-cell--6-col mdl-cell--12-col-phone">
+          {% capture project %}projects_{{ page.images }}{% endcapture %}
+          <ul class="menu-item publication-list mdl-list">
+          {% for item in site.data[project] %}<li class="mdl-list__item">
+              <div class="publication">
+                  {% if item.image %}<img src="{{ item.image }}" alt="">{% endif %}
+              </div>
+            </li>{% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+
+
