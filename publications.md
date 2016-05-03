@@ -3,30 +3,25 @@ layout: page
 title: Publications
 permalink: /publications/
 ---
-
+<div class="panel">
 <div class="row publications">
-    <div class="col-xs-12 col-md-6 col-lg-6">
-        <section>
-            <blockquote>
-                <p class="fsource">&quot;The single biggest problem in communication is the illusion that it has taken place.&quot;</p>
-                <footer>
-                    <cite> George Bernard Shaw</cite>
-                </footer>
-            </blockquote>
-            <p>I find that writing helps me to organize my thoughts, clarify my motivations, and pushes me become a better overall communicator. This page contains a complete list of the publications that I have either led or participated in.</p>
+    <section>
+        <blockquote class="panel">
+            <p class="fsource">&quot;The single biggest problem in communication is the illusion that it has taken place.&quot;</p>
+            <footer>
+                <cite> George Bernard Shaw</cite>
+            </footer>
+        </blockquote>
+        <p>Writing helps me to organize my thoughts, clarify my motivations, and pushes me become a better communicator. This page contains a complete list of the publications that I have either led or participated in.</p>
 
-            <p>The corresponding "tag cloud" was generated using the words in the titles of all of the publications listed below.</p>
-        </section>
-    </div>
-    <div class="col-xs-12 col-md-6 col-lg-6">
-        <img id="" src="/images/publications/tagcloud/sized/s_tc-alternative-2014-03-08-8.39.41-blue.png">
-    </div>
+        <p>The following "tag cloud" image was generated using the words in the titles of all of the publications listed below.</p>
+    </section>
+    <div id="tagcloud"></div>
 </div>
 
+<h4>Peer-reviewed Journal Publications</h4>
 
-### Peer-reviewed Journal Publications
-
-  <ul class="menu-item publication-list">
+  <ul class="mdl-list menu-item publication-list">
     {% for pub in site.data.pubs_journals %}<li>
         <div class="publication">
             {% if pub.image %}<img src="/images/publications/covers/{{ pub.image }}" alt="cover" class="pub-teaser">{% endif %}
@@ -38,9 +33,9 @@ permalink: /publications/
     </li>{% endfor %}
   </ul>
 
-### Book Chapters
+<h4>Book Chapters</h4>
 
-  <ul class="menu-item publication-list">
+  <ul class="mdl-list menu-item publication-list">
     {% for pub in site.data.pubs_chapters %}<li>
         <div class="publication">
             {% if pub.image %}<img src="/images/publications/covers/{{ pub.image }}" alt="cover" class="pub-teaser">{% endif %}
@@ -52,9 +47,9 @@ permalink: /publications/
     </li>{% endfor %}
   </ul>
 
-### Technology Reports
+<h4>Technology Reports</h4>
 
-  <ul class="menu-item publication-list">
+  <ul class="mdl-list menu-item publication-list">
     {% for pub in site.data.pubs_technicalreports %}<li>
         <div class="publication no-image">
             {% if pub.image %}<img src="/images/publications/covers/{{ pub.image }}" alt="cover" class="pub-teaser">{% endif %}
@@ -66,9 +61,9 @@ permalink: /publications/
     </li>{% endfor %}
   </ul>
 
-### Technical Articles
+<h4>Technical Articles</h4>
 
-  <ul class="menu-item publication-list">
+  <ul class="mdl-list menu-item publication-list">
     {% for pub in site.data.pubs_technicalarticles %}<li>
         <div class="publication no-image">
             {% if pub.image %}<img src="/images/publications/covers/{{ pub.image }}" alt="cover" class="pub-teaser">{% endif %}
@@ -80,9 +75,9 @@ permalink: /publications/
     </li>{% endfor %}
   </ul>
 
-### Research Grants
+<h4>Research Grants</h4>
 
-  <ul class="menu-item publication-list">
+  <ul class="mdl-list menu-item publication-list">
     {% for pub in site.data.pubs_researchgrants %}<li>
         <div class="publication no-image">
             {% if pub.image %}<img src="/images/publications/covers/{{ pub.image }}" alt="cover" class="pub-teaser">{% endif %}
@@ -95,9 +90,9 @@ permalink: /publications/
   </ul>
 
 
-### Refereed Conferences and Workshops
+<h4>Refereed Conferences and Workshops</h4>
 
-  <ul class="menu-item publication-list">
+  <ul class="mdl-list menu-item publication-list">
     {% for pub in site.data.pubs_conferences %}<li>
         <div class="publication no-image">
             {% if pub.image %}<img src="/images/publications/covers/{{ pub.image }}" alt="cover" class="pub-teaser">{% endif %}
@@ -108,3 +103,5 @@ permalink: /publications/
         </div>
     </li>{% endfor %}
   </ul>
+
+</div>
