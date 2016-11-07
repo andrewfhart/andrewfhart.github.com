@@ -1,3 +1,10 @@
+---
+layout: longform
+title:  "The Trouble with Challenges"
+date:   2016-11-07 15:30:00
+categories: personal random
+---
+
 ## The trouble with "challenges"
 
 Yesterday a friend asked me if I wanted to participate in a Plank Challenge. Basically, this is an attempt to gradually increase the amount of time you can maintain a Plank position, ostensibly gaining core strength in the process. Here's the gist of the challenge:
