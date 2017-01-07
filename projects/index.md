@@ -51,6 +51,7 @@ permalink: /projects/
   </a></li>
 </ul>
 
+<br/><br/>
 
 <img src="{{ "/images/logos/nasa.jpeg" | prepend: site.base_url }}" alt="NASA Logo">
 <br/><br/>
