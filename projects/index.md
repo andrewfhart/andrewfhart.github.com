@@ -8,15 +8,15 @@ permalink: /projects/
 
 <h3> Current Projects </h3>
 
-<img src="/images/logos/seatgeek.png" style="float:left;margin-right:10px;"/>
+<img src="/images/logos/seatgeek.png" style="width:200px;float:left;margin-right:10px;"/>
 
 I am the Platform Director for SeatGeek Open, a revolutionary primary ticketing system system being developed by secondary market ticketing powerhouse <a target="_new" href="http://seatgeek.com/">SeatGeek</a>. I view this as a phenomenal chance to lead an innovative company's push into the wild world of primary market ticketing, and to build not just another ticketing system, but a new kind of platform for open distribution of tickets between rightsholders (teams, promoters, etc.) and distribution partners like startups, exchanges, and brokers looking to do innovative things with tickets. Everything we're doing with SeatGeek Open is with the goal of providing greater, more fluid access to tickets and generating more opportunities to engage with fans looking to attend live events.
 
 This role allows me to bring my experience at Pogoseat (more below), working with each of the major U.S. primary ticketing systems for the past two years, and my experience building large scale data management systems for NASA (more even further below) to help ensure that this effort has a strong technical foundation and a bright future. I'm excited to be able to build a product that desperately needs to exist (the general fan opinion of the current market leader's offerings (ahem, Ticketmaster) is less than stellar), and to work with some of the brightest and most talented engineers I've ever had the pleasure to meet.
 
-Learn more about SeatGeek Open at <a target="_new" href="http://seatgeek.com/open">http://seatgeek.com/open</a> d
+<p>Learn more about SeatGeek Open at <a target="_new" href="http://seatgeek.com/open">http://seatgeek.com/open</a></p>
 
-Read things people are saying about what we're building:
+<p>Read things people are saying about what we're building:</p>
 
 <ul>
   <li>Tech Crunch: <a target="_new" href="https://techcrunch.com/2016/08/11/seatgeek-open/">
