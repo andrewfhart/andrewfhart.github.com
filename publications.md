@@ -7,7 +7,7 @@ permalink: /publications/
 <div class="row publications">
     <section>
         <blockquote class="panel">
-            <p class="fsource">&quot;The single biggest problem in communication is the illusion that it has taken place.&quot;</p>
+            <p class="fsource">The single biggest problem in communication is the illusion that it has taken place.</p>
             <footer>
                 <cite> George Bernard Shaw</cite>
             </footer>
