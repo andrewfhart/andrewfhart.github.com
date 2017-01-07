@@ -4,17 +4,17 @@ title: About
 permalink: /about/
 ---
 
-Hi there --- I'm Andrew Hart, an entrepreneur and software engineer working in sunny Los Angeles, California.
+Hi there --- I'm Andrew Hart, an entrepreneur and software engineer working in New York City.
 
 <br/>
-<a href="https://pogoseat.com/">
-  <img src="/images/logos/pogoseat.jpeg" alt="Pogoseat Logo" title="Pogoseat - Upgrade Your Game" />
+<a href="https://seatgeek.com/">
+  <img src="/images/logos/seatgeek-bigger.png" alt="SeatGeek Logo" title="SeatGeek - Your Ticket to Sports, Concerts, and More" />
 </a>
-I'm currently the CTO of [Pogoseat, Inc.](https://pogoseat.com/), a venture-backed startup based in Venice Beach, CA. We're developing a powerful new way to make sure you get the best possible experience at live events. On any given day I might be managing our engineering team, digging through data to find ways to optimize the performance of our mobile app and REST APIs, or working to refine the product road-map with the business development folks.
+By day I am Platform Director for [SeatGeek Open](http://seatgeek.com/open), a modern, open platform for primary ticketing, from SeatGeek, the best ticket buying experience on the Web. Based in New York City, we're developing a modern box office that is mobile, flexible, and widely accessible - perfectly built for teams and artists looking to reach more fans and create richer experiences.
 
-I am able to draw upon experience gained from working in a wide variety of environments, from [university research lab](http://scec.usc.edu) to [early start-up](https://www.pogoseat.com) to [national space agency](http://jpl.nasa.gov). Each has provided me with unique and valuable perspectives and lessons on the art and science of software development.
+I am able to draw upon experience gained from working in a wide variety of environments, from [university research lab](http://scec.usc.edu) to [early stage start-up](https://www.pogoseat.com) to [national space agency](http://jpl.nasa.gov). Each has provided me with unique and valuable perspectives and lessons on the art and science of software development.
 
-When I'm not in front of a keyboard, I'm usually out taking photographs. Travel and photography are two longstanding passions of mine that go well together, and I've taken every opportunity to get out and see the world, always with [my camera](http://www.dpreview.com/reviews/nikon-d7100), of course.
+When I'm not in front of a keyboard, I'm usually taking photographs. Travel and photography are two longstanding passions of mine that go well together, and I take every possible opportunity to get out and go see the world, always with [my camera](http://www.dpreview.com/reviews/nikon-d7100), of course.
 
 ---
 
