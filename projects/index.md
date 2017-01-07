@@ -8,22 +8,49 @@ permalink: /projects/
 
 <h3> Current Projects </h3>
 
-<img src="/images/logos/pogoseat-120.png" style="width:120px;float:left;margin-right:10px;"/>
+<img src="/images/logos/seatgeek.png" style="float:left;margin-right:10px;"/>
 
-<p>I'm currently the CTO of <a href="https://pogoseat.com/" target="_new">Pogoseat, Inc.</a>, a venture-backed startup based in Venice Beach, CA. We're developing tools to help fans get the best possible experience at live events. From a technical perspective, this involves maintaining deep integration with all of the major ticketing system's APIs, real-time inventory synchronization with the primary ticket sales box office, and algorithmic pricing models to maximize value to the fan and the team. The Pogoseat platform for seat and VIP upgrades is second-to-none, and we are passionate about continuing to lead through innovation and engineering talent.</p>
+I am the Platform Director for SeatGeek Open, a revolutionary primary ticketing system system being developed by secondary market ticketing powerhouse <a target="_new" href="http://seatgeek.com/">SeatGeek</a>. I view this as a phenomenal chance to lead an innovative company's push into the wild world of primary market ticketing, and to build not just another ticketing system, but a new kind of platform for open distribution of tickets between rightsholders (teams, promoters, etc.) and distribution partners like startups, exchanges, and brokers looking to do innovative things with tickets. Everything we're doing with SeatGeek Open is with the goal of providing greater, more fluid access to tickets and generating more opportunities to engage with fans looking to attend live events.
 
+This role allows me to bring my experience at Pogoseat (more below), working with each of the major U.S. primary ticketing systems for the past two years, and my experience building large scale data management systems for NASA (more even further below) to help ensure that this effort has a strong technical foundation and a bright future. I'm excited to be able to build a product that desperately needs to exist (the general fan opinion of the current market leader's offerings (ahem, Ticketmaster) is less than stellar), and to work with some of the brightest and most talented engineers I've ever had the pleasure to meet.
 
-<iframe src="https://player.vimeo.com/video/38458265?color=bf2b1c&title=0&byline=0&portrait=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-<p><a href="https://vimeo.com/38458265">The Story of Pogoseat</a> from <a href="https://vimeo.com/pogoseat">Pogoseat</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+Learn more about SeatGeek Open at <a target="_new" href="http://seatgeek.com/open">http://seatgeek.com/open</a> d
 
+Read things people are saying about what we're building:
 
-<p>Pogoseat's technology takes has evolved from prototype to platform in the past 18 months, and we have some exciting offerings on the horizon that we believe will redefine what it means to implement seat and VIP upgrade programs at live events.</p>
+<ul>
+  <li>Tech Crunch: <a target="_new" href="https://techcrunch.com/2016/08/11/seatgeek-open/">
+      SeatGeek moves beyond resale tickets with new ‘Open’ platform</a></li>
+  <li>PC Mag: <a target="_new" href="http://www.pcmag.com/news/346985/seatgeek-open-looks-to-take-on-ticketmaster">
+      SeatGeek Open Looks to Take on Ticketmaster</a></li>
+  <li>MLS: <a target="_new" href="http://www.mlssoccer.com/post/2016/07/27/mls-partners-seatgeek-deliver-better-ticketing-experience-fans">
+      MLS partners with SeatGeek to deliver better ticketing experience for fans
+  </a></li>
+  <li>Bloomberg: <a target="_new" href="https://www.bloomberg.com/news/articles/2016-07-27/mls-moves-to-open-its-ticket-markets-unlike-the-rest-of-sports">
+      MLS Moves to Open Its Ticket Markets, Unlike the Rest of Sports
+  </a></li>
+</ul>
 
-<p>As CTO, my job is to maintain the high-level vision while also thoroughly understanding the low-level details. Every day, I work hands-on with our engineering team to coordinate effort, prototype and iterate features, and maintain a lean, agile development process.</p>
-
-<p>As someone who delights in building robust, innovative software used by thousands of people, Pogoseat is a dream job. You can learn more about what we're doing on our <a href="http://pogoseat.com/" target="_new">website</a>.</p>
 
 <h3> Past Projects </h3>
+
+<img src="/images/logos/pogoseat-120.png" style="width:120px;"/>
+
+<p>I served as CTO of <a href="https://pogoseat.com/" target="_new">Pogoseat, Inc.</a>, a venture-backed startup based in Venice Beach, CA from 2014-2016. Pogoseat developed tools to help fans get the best possible experience at live events. From a technical perspective, this involved maintaining real-time integration with all of the major U.S. ticketing system APIs, handling synchronization of inventory with each team's box office, and implementation of algorithmic pricing models to maximize value to both the fan and the team. Despite being the underdog in our market, the platform Pogoseat built for seat and VIP upgrades was widely acclaimed. However, I'm most thankful for the opportunity to build and lead a team of talented , motivated engineers who were each passionate about employing technology to improve the fan experience at live events.</p>
+
+<ul>
+  <li>Tech Crunch: <a target="_new" href="https://techcrunch.com/2014/07/28/pogoseat-2-3m/">
+      Pogoseat Raises $2.3 Million To Offer Discounted Seat Upgrades At Sporting Events</a></li>
+  <li>ESPN: <a target="_new" href="http://www.espn.com/blog/playbook/tech/post/_/id/2922/move-to-better-seats-with-the-pogoseat-app">
+      Move to better seats with the Pogoseat app</a></li>
+  <li>AXS: <a target="_new" href="http://www.axs.com/news/upgrade-your-concert-experience-with-pogoseat-81460">
+      Upgrade your concert experience with Pogoseat
+  </a></li>
+  <li>L.A. Biz: <a target="_new" href="http://www.bizjournals.com/losangeles/news/2016/04/20/pogoseat-scores-aeg-deal-for-seat-upgrades-at.html">
+      Pogoseat scores AEG deal for seat upgrades at StubHub Center
+  </a></li>
+</ul>
+
 
 <img src="{{ "/images/logos/nasa.jpeg" | prepend: site.base_url }}" alt="NASA Logo">
 <br/><br/>
